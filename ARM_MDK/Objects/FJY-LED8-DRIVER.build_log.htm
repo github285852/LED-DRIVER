@@ -1,0 +1,106 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Jiang Jihai, ff, LIC=9N0AR-KG9SG-JPJZQ-NF6V3-APN1M-H1Z9Z
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.26.2.0
+Toolchain Path:  D:\program\keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DCM.DLL V1.17.2.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.5.0
+Dialog DLL:      TCM.DLL V1.36.1.0
+ 
+<h2>Project:</h2>
+E:\project code\FJY-LED8-DRIVER\ARM_MDK\FJY-LED8-DRIVER.uvprojx
+Project File Date:  11/14/2018
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\program\keil5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling scheduler.c...
+compiling ledpower.c...
+..\Source\Driver\ledpower.c(81): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i;
+..\Source\Driver\ledpower.c(137): warning:  #174-D: expression has no effect
+  			LIMIT(pwm_out[i],PWM_MIN,PWM_MAX);
+..\Source\Driver\ledpower.c(129): warning:  #177-D: variable "temp"  was declared but never referenced
+    float temp;
+..\Source\Driver\ledpower.c: 3 warnings, 0 errors
+compiling main.c...
+..\Source\USER\main.c(69): warning:  #111-D: statement is unreachable
+    return 0;
+..\Source\USER\main.c(42): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i;
+..\Source\USER\main.c(83): warning:  #177-D: variable "temp_I"  was declared but never referenced
+  	float temp_I;
+..\Source\USER\main.c: 3 warnings, 0 errors
+compiling stmflash.c...
+compiling dmx512.c...
+..\Source\Driver\dmx512.c(214): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  		p = strstr((const char*)USART_RX_BUF,(const char*)"PWM");
+..\Source\Driver\dmx512.c(221): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  				p = strstr((const char*)USART_RX_BUF,(const char*)":");
+..\Source\Driver\dmx512.c(236): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  		p = strstr((const char*)USART_RX_BUF,(const char*)"IOUT");
+..\Source\Driver\dmx512.c(243): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  				p = strstr((const char*)USART_RX_BUF,(const char*)":");
+..\Source\Driver\dmx512.c(260): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  		p = strstr((const char*)USART_RX_BUF,(const char*)"HSI:");
+..\Source\Driver\dmx512.c(264): warning:  #186-D: pointless comparison of unsigned integer with zero
+  			if(h>=0&&(h<=360))
+..\Source\Driver\dmx512.c(266): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  				p = strstr((const char*)p,(const char*)",");
+..\Source\Driver\dmx512.c(270): warning:  #186-D: pointless comparison of unsigned integer with zero
+  					if((s>=0)&&(s<=100))
+..\Source\Driver\dmx512.c(272): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  						p = strstr((const char*)(p+1),(const char*)",");
+..\Source\Driver\dmx512.c(276): warning:  #186-D: pointless comparison of unsigned integer with zero
+  							if((i>=0)&&(i<=100))
+..\Source\Driver\dmx512.c(297): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  		p = strstr((const char*)USART_RX_BUF,(const char*)"SET DAC ");
+..\Source\Driver\dmx512.c(301): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  			p = strstr((const char*)(base_p +8),(const char*)"ADDR:");
+..\Source\Driver\dmx512.c(305): warning:  #186-D: pointless comparison of unsigned integer with zero
+  				if((temp>=0)&&(temp<=5))
+..\Source\Driver\dmx512.c(314): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  			p = strstr((const char*)(base_p +8),(const char*)"CH:");
+..\Source\Driver\dmx512.c(318): warning:  #186-D: pointless comparison of unsigned integer with zero
+  				if((temp>=0)&&(temp<=DAC_CHALE-1))
+..\Source\Driver\dmx512.c(320): warning:  #513-D: a value of type "char *" cannot be assigned to an entity of type "unsigned char *"
+  					p = strstr((const char*)(p+1),(const char*)",");
+..\Source\Driver\dmx512.c: 16 warnings, 0 errors
+compiling adc.c...
+..\Source\Driver\adc.c(92): warning:  #177-D: variable "q"  was declared but never referenced
+  	float q;
+..\Source\Driver\adc.c: 1 warning, 0 errors
+compiling mymath.c...
+linking...
+Program Size: Code=26848 RO-data=972 RW-data=620 ZI-data=6596  
+".\Objects\FJY-LED8-DRIVER.axf" - 0 Error(s), 23 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.0.5.pack
+                Keil.STM32F1xx_DFP.1.0.5
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  D:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>
