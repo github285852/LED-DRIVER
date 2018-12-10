@@ -149,7 +149,7 @@ void dmx512_init(void);
 void uart_duty(void);
 void rs485_send_str(unsigned char *str);
 void rs485_send_buf(unsigned char *buf,char len);
-extern u8 DMX512_RX_BUF[513]; 
+extern unsigned char DMX512_RX_BUF[513]; 
 
 #endif
 

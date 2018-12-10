@@ -1,11 +1,15 @@
 #ifndef __LEDPOWER_H
 #define __LEDPOWER_H
 
-#define PWM_MIN   	600
+#define PWM_MIN   	840
 #define PWM_MAX			10000
 
-#define MIN_CURRENT_MA 	5 //最小直流
-#define MIN_I		0.0  //ma
+
+/* MIN_CURRENT_MA  = MIN_I,全部用直流，闭环 */
+#define MIN_I		0.1 //ma
+#define MIN_CURRENT_MA 	MIN_I	 //最小直流
+
+
 
 
 void ledpower_task(float T);

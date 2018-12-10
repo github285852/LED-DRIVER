@@ -13,8 +13,8 @@ extern float I_lpf[LED_CH];
 //float MIN_CURRENT[LED_CH]={21,20.5,16.9,13.7,20.6};
 //u16 CURRENT_MIN_PWM[LED_CH]={1000,1150,970,1060,950}; 
 
-float MIN_CURRENT[LED_CH]={1,2,16.9,13.7,1};
-u16 CURRENT_MIN_PWM[LED_CH]={870,979,970,1060,870};
+float MIN_CURRENT[LED_CH]={5,5,5,5,5};
+u16 CURRENT_MIN_PWM[LED_CH]={815,815,870,815,815};
 
 ////A1
 //float MIN_CURRENT[LED_CH]={18,13,14.8,18,17};
@@ -78,7 +78,6 @@ void ledpower_init(void)
 void SetLedPower(u8 ch,float mA)
 {
 	float pwm;
-	int i;
 	if(ch<LED_CH)
 	{
 		#if NEURAL_PID
@@ -92,17 +91,18 @@ void SetLedPower(u8 ch,float mA)
 			set_pwm(8+ch,0);
 			Sys.pid_on[ch] = 0;
 			I_npid[ch].out = PWM_MIN;
-			pwm_out[ch] = PWM_MIN;
+//			pwm_out[ch] = PWM_MIN;
+			pwm_out[ch]  = CURRENT_MIN_PWM[ch];
 		}
-		else if(mA<MIN_CURRENT[ch])
-		{
-			pwm = TARR1 - TARR1*mA/MIN_CURRENT[ch];  //导通相当于关闭LED
-			set_pwm(ch,CURRENT_MIN_PWM[ch]);
-			set_pwm(8+ch,pwm);
-			Sys.pid_on[ch] = 0;
-			I_npid[ch].out = PWM_MIN;
-			pwm_out[ch] = PWM_MIN;
-		}
+//		else if(mA<MIN_CURRENT[ch])
+//		{
+//			pwm = TARR1 - TARR1*mA/MIN_CURRENT[ch];  //导通相当于关闭LED
+//			set_pwm(ch,CURRENT_MIN_PWM[ch]);
+//			set_pwm(8+ch,pwm);
+//			Sys.pid_on[ch] = 0;
+//			I_npid[ch].out = CURRENT_MIN_PWM[ch];
+//			pwm_out[ch] = CURRENT_MIN_PWM[ch];
+//		}
 		else 
 		{
 			set_pwm(ch+8,0);
@@ -156,38 +156,57 @@ void find_min_current_task(void)
 	{
 		for(i=0;i<LED_CH;i++)
 		{
-			MIN_CURRENT[i] = 0;
-			SetLedPower(i,MIN_CURRENT_MA);
-			Sys.pid_on[i] = 1;
-			timer = 0;
-			tim =0;
+			MIN_CURRENT[i] = I_true[i]; //当电流非常小时获取，
+			out = 800;
+			//MIN_CURRENT[i] = 0;
+//			SetLedPower(i,MIN_CURRENT_MA);
+//			Sys.pid_on[i] = 1;
+//			timer = 0;
+//			tim =0;
 			while(1)
 			{
-				ledpower_task(0);
-				IWDG_Feed();//喂狗
-				delay_ms(5);
-				tim++;
-				if(tim>2000)
-				{
-				//错误，10S还没调好，
-				}
-				#if NEURAL_PID
-				error = I_npid[i].error;
-				out = I_npid[i].out;
-				#else
-				erro = Pid_I_true[i].LastError;
-				out = pwm_out[i];
-				#endif
-				if((error)<0.1)//误差比较小
-				{
-					timer++;
-					if(timer>200)//持续1S
+					IWDG_Feed();//喂狗
+					set_pwm(i,out);
+					delay_ms(10);
+					if((I_true[i]-MIN_CURRENT[i])> 0.1)
 					{
-						MIN_CURRENT[i] = MIN_CURRENT_MA;
-						Sys.Config.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out;
-						break;
+						timer++;
+						if(timer>200)
+						{
+							MIN_CURRENT[i] = MIN_CURRENT_MA;
+							Sys.Config.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out;
+							break;
+						}
 					}
-				}
+					else
+					{
+						out++;
+					}
+//				ledpower_task(0);
+//				IWDG_Feed();//喂狗
+//				delay_ms(5);
+//				tim++;
+//				if(tim>2000)
+//				{
+//				//错误，10S还没调好，
+//				}
+//				#if NEURAL_PID
+//				error = I_npid[i].error;
+//				out = I_npid[i].out;
+//				#else
+//				erro = Pid_I_true[i].LastError;
+//				out = pwm_out[i];
+//				#endif
+//				if((error)<0.1)//误差比较小
+//				{
+//					timer++;
+//					if(timer>200)//持续1S
+//					{
+//						MIN_CURRENT[i] = MIN_CURRENT_MA;
+//						Sys.Config.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out;
+//						break;
+//					}
+//				}
 			}
 		}
 		SaveConfig();

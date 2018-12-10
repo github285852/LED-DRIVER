@@ -257,8 +257,8 @@ void PWM16_init(void)
 	int i;
 	TIM2_PWM_Init(1);
 	TIM3_PWM_Init(1);
-	TIM4_PWM_Init(1);
-	TIM5_PWM_Init(1);
+	TIM4_PWM_Init(30);
+	TIM5_PWM_Init(30);
 	for(i=0;i<16;i++)
 	{
 		set_pwm(i,0);

@@ -6,7 +6,7 @@
 
 #define TARR    10000
 
-#define TARR1    1000
+#define TARR1    10000
 
 void PWM16_init(void);
 void set_pwm(unsigned char ch,unsigned int duty);

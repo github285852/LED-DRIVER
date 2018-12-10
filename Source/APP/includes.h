@@ -26,21 +26,21 @@
 
 
 #define KEIL_DEBUG	0
-
+#define DEBUG_I_OUT	1
 #define NEURAL_PID	1
 
 #define DEBUG			1
 #define CONFIG_ADDRESS          0x0803F000
 #define LED_CH		5
-#define MAX_CURRENT0		1700
-#define MAX_CURRENT1		(MAX_CURRENT0/2)
-#define MAX_CURRENT2		(MAX_CURRENT0/2)
-#define MAX_CURRENT3		(MAX_CURRENT0/2)
-#define MAX_CURRENT4		MAX_CURRENT0
+#define MAX_CURRENT0		800
+#define MAX_CURRENT1		800
+#define MAX_CURRENT2		800
+#define MAX_CURRENT3		800
+#define MAX_CURRENT4		800
 
 
 #define IS_A_BOARD			PDin(10)
-
+#define I_CHECK_PIN			PDin(8)
 
 typedef struct 
 {

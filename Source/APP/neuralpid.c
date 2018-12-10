@@ -11,6 +11,7 @@ float SignleNeuralAdaptivPID(NeuralPID *npid,float _true)
 	float norm,w11,w22,w33;
 	
 	npid->error = npid->exp - _true;
+		//npid->error =  _true - npid->exp ;
 	//反馈
 	switch(npid->M)
 	{
@@ -43,6 +44,10 @@ float SignleNeuralAdaptivPID(NeuralPID *npid,float _true)
 	npid->op = npid->error - npid->error1;
 	npid->oi = npid->error;
 	npid->od = npid->error - 2*npid->error1 + npid->error2;
+	//位置式
+//	npid->op = npid->error;
+//	npid->oi += npid->error;
+//	npid->od = npid->error - npid->error1;
 
 	norm = ABS(npid->wkp)+ABS(npid->wki)+ABS(npid->wkd); 
 	//归一化，利于收敛

@@ -62,22 +62,33 @@ int main(void)
 	//set_pwm(0,1294);
 	//IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
 	//显示
+	//自我矫正最小直流PWM
+	if(I_CHECK_PIN==0)
+	{
+		delay_ms(10);
+		if(I_CHECK_PIN==0) //找出电流等于零的临界值
+			Sys.f_find_min_pwm = 1;
+	}
   while(1)
   {		
 		Duty_Loop();
   }
   return 0;
 }
-
+u16 EXP_PWM[LED_CH];
 float DMX_CTL_I[LED_CH];
-u16 max_current[5]={1600,800,800,800,1600};//mA
+u16 max_current[5]={MAX_CURRENT0,MAX_CURRENT1,MAX_CURRENT2,MAX_CURRENT3,MAX_CURRENT4};//mA
 float EXP_OUT_I[LED_CH];
 void receiving_dmx_data(void)
 {
 	int i;
 #if KEIL_DEBUG
 	for(i = 0;i<LED_CH;i++)
+	#if DEBUG_I_OUT
 		SetLedPower(i,EXP_OUT_I[i]);
+	#else
+		set_pwm(i,EXP_PWM[i]);
+	#endif
 #else
 	u8 *p;
 	float temp_I;
