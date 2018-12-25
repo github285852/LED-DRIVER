@@ -26,7 +26,7 @@
 
 
 #define KEIL_DEBUG	0
-#define DEBUG_I_OUT	1
+#define DEBUG_I_OUT	0
 #define NEURAL_PID	1
 
 #define DEBUG			1
@@ -39,8 +39,8 @@
 #define MAX_CURRENT4		800
 
 
-#define IS_A_BOARD			PDin(10)
-#define I_CHECK_PIN			PDin(8)
+#define IS_A_BOARD			PAin(10)
+#define I_CHECK_PIN			PAin(8)
 
 typedef struct 
 {

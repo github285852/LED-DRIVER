@@ -30,3 +30,4 @@
 .\objects\pwm16.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\pwm16.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\pwm16.o: ..\Source\STM32F10x_FWLib\inc\misc.h
+.\objects\pwm16.o: ..\Source\Driver\mymath.h

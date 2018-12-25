@@ -1,5 +1,5 @@
 #include "pwm16.h"
-
+#include "mymath.h"
 /* 
 TIM映射表见中文参考手册119页
 
@@ -225,9 +225,15 @@ void TIM5_PWM_Init(u16 psc)
 void set_pwm(unsigned char ch,unsigned int duty)
 {
 	if(ch>=8)
+	{
+		duty = LIMIT(duty,0,TARR1);
 		duty = TARR1 - duty;
+	}
 	else
+	{
+		duty = LIMIT(duty,0,TARR);
 		duty = TARR - duty;
+	}
 	switch(ch)
 	{
 		case 0:TIM_SetCompare1(TIM2,duty);break;

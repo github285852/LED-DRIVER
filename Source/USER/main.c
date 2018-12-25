@@ -25,14 +25,9 @@ void GPIO_init(void)
 //	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 // 	GPIO_Init(GPIOB, &GPIO_InitStructure);//
 //	PBout(6) =  1;
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //推挽输出
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
- 	GPIO_Init(GPIOA, &GPIO_InitStructure);//
-	
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_8 | GPIO_Pin_9|GPIO_Pin_10;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 			 //上拉
- 	GPIO_Init(GPIOD, &GPIO_InitStructure);//
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);//
 }
 
 SYS Sys;
@@ -102,27 +97,43 @@ void receiving_dmx_data(void)
 	{
 		Sys.Config.addr = 18;
 	}
-	p = &DMX512_RX_BUF[Sys.Config.addr];
-	for(i=0;i<16;i++)
+	switch(DMX512_RX_BUF[0])
 	{
-		sum += p[i];
-	}
-	if(p[i] == sum)
-	{
-		for(i=0;i<LED_CH;i++)
+		case 0:
+		case 1:
+		p = &DMX512_RX_BUF[Sys.Config.addr];
+		for(i=0;i<16;i++)
 		{
-			data = *(p+i*2)<<8 | *(p+i*2+1);
-			DMX_CTL_I[i] = max_current[i]*data/65536.0;
-			SetLedPower(i,DMX_CTL_I[i]);
+			sum += p[i];
 		}
-		data = *(p+i*2)<<8 | *(p+i*2+1);
-		data = TARR1*data/65536.0;
-		//set_pwm(5,data);//FAN_OUT
-		if(data !=0)
-			PAout(8) = 1;
-		else
-			
-			PAout(8) = 0;
+		if(p[i] == sum)
+		{
+			for(i=0;i<LED_CH;i++)
+			{
+				data = *(p+i*2)<<8 | *(p+i*2+1);
+				
+				if(DMX512_RX_BUF[0]==0)
+				{
+					DMX_CTL_I[i] = max_current[i]*data/65536.0;
+					SetLedPower(i,DMX_CTL_I[i]);
+				}
+				else
+				{
+					SetLedPowerOpen(i,TARR*data/65536.0);
+				}
+			}
+			data = *(p+i*2)<<8 | *(p+i*2+1);
+			data = TARR1*data/65536.0;
+			//set_pwm(5,data);//FAN_OUT
+			if(data !=0)
+				set_pwm(7,TARR);
+			else	
+				set_pwm(7,0);
+		}
+		break;
+		case 0xcc://RDM
+		break;
+		default:break;
 	}
 #endif
 }

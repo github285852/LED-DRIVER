@@ -1,6 +1,6 @@
 Dependencies for Project 'FJY-LED8-DRIVER', Target 'Target 1': (DO NOT MODIFY !)
-F (..\Source\USER\main.c)(0x5C05122C)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+F (..\Source\USER\main.c)(0x5C21E4B9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -36,14 +36,14 @@ I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
@@ -107,7 +107,7 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\sys\sys.h)(0x5B74D2FE)
-F (..\Source\APP\includes.h)(0x5C0653D7)()
+F (..\Source\APP\includes.h)(0x5C21CCDC)()
 F (..\Source\APP\scheduler.c)(0x5BED1C4B)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\scheduler.o --omf_browse .\objects\scheduler.crf --depend .\objects\scheduler.d)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\sys\sys.h)(0x5B74D2FE)
@@ -140,26 +140,26 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
 F (..\Source\APP\PID.c)(0x5BDC2BD9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\pid.o --omf_browse .\objects\pid.crf --depend .\objects\pid.d)
 I (..\Source\APP\PID.h)(0x5BA321CE)
-F (..\Source\Driver\ledpower.c)(0x5C073D69)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\ledpower.o --omf_browse .\objects\ledpower.crf --depend .\objects\ledpower.d)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+F (..\Source\Driver\ledpower.c)(0x5C21D0FE)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\ledpower.o --omf_browse .\objects\ledpower.crf --depend .\objects\ledpower.d)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -195,14 +195,14 @@ I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
@@ -238,7 +238,7 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -246,20 +246,20 @@ I (..\Source\SYSTEM\sys\sys.h)(0x5B74D2FE)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
 I (D:\program\keil5\ARM\ARMCC\include\math.h)(0x599EDB3E)
-F (..\Source\Driver\dmx512.c)(0x5BD04957)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\dmx512.o --omf_browse .\objects\dmx512.crf --depend .\objects\dmx512.d)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+F (..\Source\Driver\dmx512.c)(0x5C0DF324)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\dmx512.o --omf_browse .\objects\dmx512.crf --depend .\objects\dmx512.d)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -295,18 +295,18 @@ I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
-F (..\Source\Driver\PWM16.c)(0x5BEEA3F1)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\pwm16.o --omf_browse .\objects\pwm16.crf --depend .\objects\pwm16.d)
+F (..\Source\Driver\PWM16.c)(0x5C21D253)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\pwm16.o --omf_browse .\objects\pwm16.crf --depend .\objects\pwm16.d)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
 I (..\Source\SYSTEM\sys\sys.h)(0x5B74D2FE)
 I (..\Source\USER\stm32f10x.h)(0x5B0675EC)
@@ -337,8 +337,9 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
+I (..\Source\Driver\mymath.h)(0x5780E2DF)
 F (..\Source\Driver\stmflash.c)(0x5BED423E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\stmflash.o --omf_browse .\objects\stmflash.crf --depend .\objects\stmflash.d)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -374,14 +375,14 @@ I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)
@@ -448,7 +449,7 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (D:\program\keil5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
@@ -486,7 +487,7 @@ I (..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5AEAD6FC)
 I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 F (..\Source\Driver\mymath.c)(0x578C4FF3)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\Source\APP -I ..\Source\CORE -I ..\Source\Driver -I ..\Source\STM32F10x_FWLib\inc -I ..\Source\SYSTEM\sys -I ..\Source\SYSTEM\delay -I ..\Source\USER-I.\RTE\_Target_1-ID:\program\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\program\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o .\objects\mymath.o --omf_browse .\objects\mymath.crf --depend .\objects\mymath.d)
-I (..\Source\APP\includes.h)(0x5C0653D7)
+I (..\Source\APP\includes.h)(0x5C21CCDC)
 I (D:\program\keil5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (D:\program\keil5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
@@ -522,14 +523,14 @@ I (..\Source\STM32F10x_FWLib\inc\misc.h)(0x5AEAD6FC)
 I (..\Source\SYSTEM\delay\delay.h)(0x5AEAD6FC)
 I (..\Source\APP\scheduler.h)(0x5AEAD6FC)
 I (..\Source\Driver\pwm16.h)(0x5BEEAB9B)
-I (..\Source\Driver\dmx512.h)(0x5BF20A06)
+I (..\Source\Driver\dmx512.h)(0x5C0DF312)
 I (..\Source\Driver\led.h)(0x50513ABC)
 I (..\Source\Driver\adc.h)(0x5BEE1AE5)
 I (..\Source\Driver\stmflash.h)(0x5B6D5C6F)
 I (..\Source\APP\PID.h)(0x5BA321CE)
 I (..\Source\APP\neuralpid.h)(0x5BECEA6A)
 I (..\Source\Driver\key.h)(0x5B56E583)
-I (..\Source\Driver\ledpower.h)(0x5C022A07)
+I (..\Source\Driver\ledpower.h)(0x5C21D122)
 I (..\Source\Driver\mcp4728.h)(0x5B6AA643)
 I (..\Source\Driver\mymath.h)(0x5780E2DF)
 I (..\Source\Driver\wdg.h)(0x5BDBF9B3)

@@ -73,7 +73,21 @@ void ledpower_init(void)
 		MIN_CURRENT[i] = MIN_CURRENT_MA;
 	}
 }
-
+//开环直接设置LED
+void SetLedPowerOpen(u8 ch,u16 pwm)
+{
+	u16 pwmout;
+	Sys.pid_on[ch] = 0;
+	if(pwm==0)
+	{
+		pwmout = 0;
+	}
+	else
+	{
+		pwmout = pwm + Sys.Config.current_min_pwm[ch];
+	}
+	set_pwm(ch,pwmout);
+}
 
 void SetLedPower(u8 ch,float mA)
 {
@@ -213,15 +227,6 @@ void find_min_current_task(void)
 		Sys.f_find_min_pwm = 0;
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
