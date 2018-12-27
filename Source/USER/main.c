@@ -38,6 +38,7 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	SysTick_Configuration();
 	GPIO_init();
+	Debug_init();
   PWM16_init();
 	LoadConfig();
 	ADC1Init();
@@ -58,7 +59,7 @@ int main(void)
 	//IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
 	//显示
 	//自我矫正最小直流PWM
-	if(I_CHECK_PIN==0)
+	if(I_CHECK_PIN==1)
 	{
 		delay_ms(10);
 		if(I_CHECK_PIN==0) //找出电流等于零的临界值
@@ -89,14 +90,7 @@ void receiving_dmx_data(void)
 	float temp_I;
 	unsigned char sum=0;
 	u16 data;
-	if(IS_A_BOARD)
-	{
-		Sys.Config.addr = 1;
-	}
-	else
-	{
-		Sys.Config.addr = 18;
-	}
+	Sys.Config.addr = 1;
 	switch(DMX512_RX_BUF[0])
 	{
 		case 0:

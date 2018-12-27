@@ -23,7 +23,7 @@
 #include "mcp4728.h"
 #include "mymath.h"
 #include "wdg.h"
-
+#include "debug.h"
 
 #define KEIL_DEBUG	0
 #define DEBUG_I_OUT	0

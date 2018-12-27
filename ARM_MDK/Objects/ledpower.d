@@ -47,3 +47,4 @@
 .\objects\ledpower.o: ..\Source\Driver\mcp4728.h
 .\objects\ledpower.o: ..\Source\Driver\mymath.h
 .\objects\ledpower.o: ..\Source\Driver\wdg.h
+.\objects\ledpower.o: ..\Source\Driver\debug.h

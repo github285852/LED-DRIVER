@@ -47,3 +47,4 @@
 .\objects\dmx512.o: ..\Source\Driver\mcp4728.h
 .\objects\dmx512.o: ..\Source\Driver\mymath.h
 .\objects\dmx512.o: ..\Source\Driver\wdg.h
+.\objects\dmx512.o: ..\Source\Driver\debug.h

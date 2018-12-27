@@ -48,4 +48,5 @@
 .\objects\adc.o: ..\Source\Driver\mcp4728.h
 .\objects\adc.o: ..\Source\Driver\mymath.h
 .\objects\adc.o: ..\Source\Driver\wdg.h
+.\objects\adc.o: ..\Source\Driver\debug.h
 .\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\math.h

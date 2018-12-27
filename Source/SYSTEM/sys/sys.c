@@ -29,24 +29,4 @@ __asm void MSR_MSP(u32 addr)
     BX r14
 }
 
-#define DEBUG 	1
 
-void Debug_printf(char* fmt,...)  
-{
-	#if DEBUG
-	u8 *pbuf,*p;
-	va_list ap;
-	pbuf = malloc(50);
-	if(!pbuf)									
-	{
-		return ;
-	}
-	va_start(ap,fmt);
-	vsprintf((char*)pbuf,fmt,ap);
-	va_end(ap);			
-  p = pbuf;
-	rs485_send_str(p);
-	//Picture_ShowString(*pic,x,y,pic->w-x,pic->h-y,size,pbuf);	
-	free(pbuf);
-	#endif
-}

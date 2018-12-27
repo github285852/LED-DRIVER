@@ -47,3 +47,4 @@
 .\objects\stmflash.o: ..\Source\Driver\mcp4728.h
 .\objects\stmflash.o: ..\Source\Driver\mymath.h
 .\objects\stmflash.o: ..\Source\Driver\wdg.h
+.\objects\stmflash.o: ..\Source\Driver\debug.h

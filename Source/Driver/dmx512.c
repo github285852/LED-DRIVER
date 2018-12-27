@@ -4,7 +4,7 @@ u32 tim_over=0;
 u32 break_tim;
 //DMXData *DmxData;
 //接收缓存区 	
-u8 DMX512_RX_BUF[513];  	//接收缓冲,最大513个字节.
+u8 DMX512_RX_BUF[513]={1,2,2};  	//接收缓冲,最大513个字节.
 //接收到的数据长度
 u16 DMX512_RX_CNT=0;   	
 u8 TEST_SUM;
@@ -189,34 +189,8 @@ void DMX512_handle(void)
 
 //	}
 }
+ 
 
-#define USART_REC_LEN  			200  
-u8  USART_RX_BUF[USART_REC_LEN]; 
-u16 USART_RX_STA;  
-
-void uart_resiver(u8 Res)
-{
-	if((USART_RX_STA&0x8000)==0)
-	{
-		if(USART_RX_STA&0x4000)
-		{
-			if(Res!=0x0a)USART_RX_STA=0;
-			else USART_RX_STA|=0x8000;	
-		}
-		else 
-		{	
-			if(Res==0x0d)
-				USART_RX_STA|=0x4000;
-			else
-			{
-				USART_RX_BUF[USART_RX_STA&0X3FFF]=Res;
-				USART_RX_STA++;
-				if(USART_RX_STA>(USART_REC_LEN-1))
-					USART_RX_STA=0;  
-			}		 
-		}
-	} 
-}
 void rs485_send_str(unsigned char *str)
 {
 	DMX_TXEN;
@@ -241,141 +215,4 @@ void rs485_send_buf(unsigned char *buf,char len)
 	}		
 	while((USART2->SR&0X40)==0);//????,??????   
 	DMX_RXEN;
-}
-unsigned int pwm[32]={0,0};
-void uart_duty(void)
-{
-	unsigned char *p,*base_p;
-	unsigned char cmd;
-	unsigned char buf[50];
-	unsigned int h;
-	unsigned char s,i;
-	unsigned temp;
-	float temp_f;
-	if(USART_RX_STA&0x8000)
-	{
-		USART_RX_BUF[USART_RX_STA&0X3FFF]=0;
-		//PWM输出
-		p = strstr((const char*)USART_RX_BUF,(const char*)"PWM");
-		if(p != NULL)
-		{
-			p += 3;
-			cmd = atoi((const char*)p);
-			if(cmd<32)
-			{
-				p = strstr((const char*)USART_RX_BUF,(const char*)":");
-				if(p != NULL)
-				{
-					pwm[cmd] = atoi((const char*)(p+1));
-					set_pwm(cmd,pwm[cmd]);
-					//set_pwm(cmd+8,0);
-					Sys.pid_on[cmd] = 0;
-				}
-				sprintf((char *)buf,(const char*)"PWM%d=%d Done\r\n",cmd,pwm[cmd]);
-				rs485_send_str(buf);
-			}
-			else
-				rs485_send_str((unsigned char *)"ERROR\r\n");
-		}
-		/////////////////期望电流输出
-		p = strstr((const char*)USART_RX_BUF,(const char*)"IOUT");
-		if(p != NULL)
-		{
-			p += 4;
-			cmd = atoi((const char*)p);
-			if(cmd<32)
-			{
-				p = strstr((const char*)USART_RX_BUF,(const char*)":");
-				if(p != NULL)
-				{
-					temp_f = atof((const char*)(p+1));
-					SetLedPower(cmd,temp_f);
-					if(Sys.pid_on==0)
-					{
-						//ledpower_init();
-					}
-				}
-				sprintf((char *)buf,(const char*)"IOUT%d=%0.1f Done\r\n",cmd,temp_f);
-				rs485_send_str(buf);
-			}
-			else
-				rs485_send_str((unsigned char *)"ERROR\r\n");
-		}	
-		
-		p = strstr((const char*)USART_RX_BUF,(const char*)"HSI:");
-		if(p!=NULL)
-		{
-			h = atoi((const char*)(p+4));
-			if(h>=0&&(h<=360))
-			{
-				p = strstr((const char*)p,(const char*)",");
-				if(p!=NULL)
-				{
-					s = atoi((const char*)(p+1));
-					if((s>=0)&&(s<=100))
-					{
-						p = strstr((const char*)(p+1),(const char*)",");
-						if(p!=NULL)
-						{
-							i = atoi((const char*)(p+1));
-							if((i>=0)&&(i<=100))
-							{
-
-							}
-							else
-							{
-								rs485_send_str((unsigned char *)"I ERROR\r\n");
-							}
-						}
-					}
-					else
-					{
-						rs485_send_str((unsigned char*)"S ERROR\r\n");
-					}
-				}
-			}
-			else
-			{
-				rs485_send_str((unsigned char *)"H ERROR\r\n");
-			}
-		}
-		p = strstr((const char*)USART_RX_BUF,(const char*)"SET DAC ");
-		if(p != NULL)
-		{
-			base_p = p;
-			p = strstr((const char*)(base_p +8),(const char*)"ADDR:");
-			if(p != NULL)
-			{
-				temp = (int)atoi((const char*)(p+5));
-				if((temp>=0)&&(temp<=5))
-				{
-					
-				}
-				else
-				{
-					rs485_send_str((unsigned char *)"param ERROR\r\n");
-				}
-			}
-			p = strstr((const char*)(base_p +8),(const char*)"CH:");
-			if(p !=NULL)
-			{
-				temp = (int)atoi((const char*)(p+3));
-				if((temp>=0)&&(temp<=DAC_CHALE-1))
-				{
-					p = strstr((const char*)(p+1),(const char*)",");
-					if(p != NULL)
-					{
-						temp_f = (float)atof((const char*)(p+1));
-
-						rs485_send_str((unsigned char *)"mcp4728_update OK\r\n");
-					}
-				}
-				else
-				{
-					rs485_send_str((unsigned char *)"param ERROR\r\n");
-				}
-			}
-		}
-		USART_RX_STA=0;  
-	}
 }

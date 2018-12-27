@@ -47,3 +47,4 @@
 .\objects\mymath.o: ..\Source\Driver\mcp4728.h
 .\objects\mymath.o: ..\Source\Driver\mymath.h
 .\objects\mymath.o: ..\Source\Driver\wdg.h
+.\objects\mymath.o: ..\Source\Driver\debug.h

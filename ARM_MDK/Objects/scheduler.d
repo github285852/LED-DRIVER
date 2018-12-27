@@ -47,3 +47,4 @@
 .\objects\scheduler.o: ..\Source\Driver\mcp4728.h
 .\objects\scheduler.o: ..\Source\Driver\mymath.h
 .\objects\scheduler.o: ..\Source\Driver\wdg.h
+.\objects\scheduler.o: ..\Source\Driver\debug.h

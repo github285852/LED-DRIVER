@@ -477,6 +477,11 @@
               <FileType>1</FileType>
               <FilePath>..\Source\Driver\wdg.c</FilePath>
             </File>
+            <File>
+              <FileName>debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\Driver\debug.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
