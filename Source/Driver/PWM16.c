@@ -190,7 +190,7 @@ void TIM5_PWM_Init(u16 psc)
 	
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
-  GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0|GPIO_Pin_1||GPIO_Pin_2|GPIO_Pin_3;
+  GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;
   GPIO_Init(GPIOA,&GPIO_InitStructure);
   
    //≥ı ºªØTIM5

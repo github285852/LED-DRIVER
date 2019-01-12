@@ -103,7 +103,7 @@ void DMX_EXTI_IRQHandler(void)
 			break_tim = tim_over*65535 + DMX_TIM->CNT;
 		  if((break_tim>=88)&&(break_tim<=1000000))
 			{
-				receiving_dmx_data();
+			//	receiving_dmx_data();
 				
 //				if(USART_GetITStatus(DMX_USART, USART_IT_RXNE) != RESET) //接收到数据
 //				{	 
@@ -190,7 +190,6 @@ void DMX512_handle(void)
 //	}
 }
  
-
 void rs485_send_str(unsigned char *str)
 {
 	DMX_TXEN;
@@ -216,3 +215,22 @@ void rs485_send_buf(unsigned char *buf,char len)
 	while((USART2->SR&0X40)==0);//????,??????   
 	DMX_RXEN;
 }
+
+u32 baude=250000,baude_last=250000;
+void change_baude(void)
+{
+	if(baude_last!=baude)
+	{
+		USART_InitTypeDef USART_InitStructure;
+		USART_InitStructure.USART_BaudRate = baude;	//波特率设置
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;//8位数据长度
+		USART_InitStructure.USART_StopBits = USART_StopBits_2;//一个停止位
+		USART_InitStructure.USART_Parity = USART_Parity_No;///奇偶校验位
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//无硬件数据流控制
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;//收发模式
+
+		USART_Init(USART2, &USART_InitStructure);  //初始化串口
+		baude_last = baude;
+	}
+}
+

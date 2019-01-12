@@ -170,8 +170,8 @@ void find_min_current_task(void)
 	{
 		for(i=0;i<LED_CH;i++)
 		{
-			MIN_CURRENT[i] = I_true[i]; //当电流非常小时获取，
 			out = 800;
+			MIN_CURRENT[i] = I_true[i]; //当电流非常小时获取，
 			//MIN_CURRENT[i] = 0;
 //			SetLedPower(i,MIN_CURRENT_MA);
 //			Sys.pid_on[i] = 1;

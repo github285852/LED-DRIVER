@@ -89,7 +89,7 @@ void change_baude(void);
 void Duty_50ms(void)
 {
 	duty_time[5][0] = GetSysTime_us()/1000000.0f;
-
+	change_baude();
   duty_time[5][1] = GetSysTime_us()/1000000.0f - duty_time[5][0];
 }
 
