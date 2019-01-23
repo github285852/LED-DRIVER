@@ -4,7 +4,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "stdio.h"
-
+#include "malloc.h"
 #include "sys.h"
 #include "delay.h"
 #include "scheduler.h"
@@ -20,27 +20,24 @@
 #include "key.h"
 #include "PWM16.h"
 #include "ledpower.h"
-#include "mcp4728.h"
 #include "mymath.h"
 #include "wdg.h"
 #include "debug.h"
+#include "rdm_slave.h"
+
+#if defined PANLE
+
+#include "panle.h"
+
+#endif
 
 #define KEIL_DEBUG	0
-#define DEBUG_I_OUT	0
+#define DEBUG_I_OUT	1
 #define NEURAL_PID	1
 
 #define DEBUG			1
 #define CONFIG_ADDRESS          0x0803F000
-#define LED_CH		5
-#define MAX_CURRENT0		800
-#define MAX_CURRENT1		800
-#define MAX_CURRENT2		800
-#define MAX_CURRENT3		800
-#define MAX_CURRENT4		800
 
-
-#define IS_A_BOARD			PAin(10)
-#define I_CHECK_PIN			PAin(8)
 
 typedef struct 
 {
@@ -53,6 +50,9 @@ typedef struct
 {
 	u8 pid_on[LED_CH];
 	u8 f_find_min_pwm;
+	u8 dmx_hanle;
+	unsigned char UID[ID_LEN];
+	STATUS status;
 	CONFIG Config;
 }SYS;
 

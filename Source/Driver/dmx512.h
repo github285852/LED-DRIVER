@@ -2,7 +2,7 @@
 #define __DMX512_H
 
 
-#define EN_USART2_RX	1
+#define EN_RDM	1
 
 
 #define DMX_USART											USART2
@@ -33,9 +33,23 @@
 #define DMX_TIM_IRQHandler						TIM6_IRQHandler
 
 
+#if EN_RDM
+
+#define RDM_DMA												DMA1
+#define RDM_DMA_ISR_TCIF							DMA_IFCR_CTCIF7
+#define RDM_DMA_Channle								DMA1_Channel7
+#define RDM_DMA_Channle_IRQn					DMA1_Channel7_IRQn
+#define RDM_DMA_Send_IRQHandler				DMA1_Channel7_IRQHandler
+
+int MallocRDMTxBuf(unsigned short len);																								
+int RDMDMASend(unsigned char *buf,unsigned short len);
+
+extern unsigned char *RDM_SendBuf;
+
+#endif
+
 #define DMX_RXEN				PAout(1) = 0
 #define DMX_TXEN				PAout(1) = 1
-
 
 void dmx512_init(void);
 void DMX512_handle(void);

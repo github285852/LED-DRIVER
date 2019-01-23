@@ -3,7 +3,7 @@
 .\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\dmx512.o: ..\Source\SYSTEM\sys\sys.h
+.\objects\dmx512.o: ..\Source\Driver\malloc.h
 .\objects\dmx512.o: ..\Source\USER\stm32f10x.h
 .\objects\dmx512.o: ..\Source\CORE\core_cm3.h
 .\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,6 +33,7 @@
 .\objects\dmx512.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\dmx512.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\dmx512.o: ..\Source\STM32F10x_FWLib\inc\misc.h
+.\objects\dmx512.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\dmx512.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\dmx512.o: ..\Source\APP\scheduler.h
 .\objects\dmx512.o: ..\Source\Driver\pwm16.h
@@ -44,7 +45,9 @@
 .\objects\dmx512.o: ..\Source\APP\neuralpid.h
 .\objects\dmx512.o: ..\Source\Driver\key.h
 .\objects\dmx512.o: ..\Source\Driver\ledpower.h
-.\objects\dmx512.o: ..\Source\Driver\mcp4728.h
 .\objects\dmx512.o: ..\Source\Driver\mymath.h
 .\objects\dmx512.o: ..\Source\Driver\wdg.h
 .\objects\dmx512.o: ..\Source\Driver\debug.h
+.\objects\dmx512.o: ..\Source\Driver\rdm_slave.h
+.\objects\dmx512.o: ..\Source\Driver\rdm.h
+.\objects\dmx512.o: ..\Source\Panle\panle.h

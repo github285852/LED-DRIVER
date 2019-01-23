@@ -3,7 +3,7 @@
 .\objects\stmflash.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\stmflash.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\stmflash.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\stmflash.o: ..\Source\SYSTEM\sys\sys.h
+.\objects\stmflash.o: ..\Source\Driver\malloc.h
 .\objects\stmflash.o: ..\Source\USER\stm32f10x.h
 .\objects\stmflash.o: ..\Source\CORE\core_cm3.h
 .\objects\stmflash.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,6 +33,7 @@
 .\objects\stmflash.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\stmflash.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\stmflash.o: ..\Source\STM32F10x_FWLib\inc\misc.h
+.\objects\stmflash.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\stmflash.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\stmflash.o: ..\Source\APP\scheduler.h
 .\objects\stmflash.o: ..\Source\Driver\pwm16.h
@@ -44,7 +45,9 @@
 .\objects\stmflash.o: ..\Source\APP\neuralpid.h
 .\objects\stmflash.o: ..\Source\Driver\key.h
 .\objects\stmflash.o: ..\Source\Driver\ledpower.h
-.\objects\stmflash.o: ..\Source\Driver\mcp4728.h
 .\objects\stmflash.o: ..\Source\Driver\mymath.h
 .\objects\stmflash.o: ..\Source\Driver\wdg.h
 .\objects\stmflash.o: ..\Source\Driver\debug.h
+.\objects\stmflash.o: ..\Source\Driver\rdm_slave.h
+.\objects\stmflash.o: ..\Source\Driver\rdm.h
+.\objects\stmflash.o: ..\Source\Panle\panle.h

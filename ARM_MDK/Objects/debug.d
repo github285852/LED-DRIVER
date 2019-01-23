@@ -33,6 +33,7 @@
 .\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\debug.o: ..\Source\APP\includes.h
+.\objects\debug.o: ..\Source\Driver\malloc.h
 .\objects\debug.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\debug.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\debug.o: ..\Source\APP\scheduler.h
@@ -45,7 +46,9 @@
 .\objects\debug.o: ..\Source\APP\neuralpid.h
 .\objects\debug.o: ..\Source\Driver\key.h
 .\objects\debug.o: ..\Source\Driver\ledpower.h
-.\objects\debug.o: ..\Source\Driver\mcp4728.h
 .\objects\debug.o: ..\Source\Driver\mymath.h
 .\objects\debug.o: ..\Source\Driver\wdg.h
+.\objects\debug.o: ..\Source\Driver\rdm_slave.h
+.\objects\debug.o: ..\Source\Driver\rdm.h
+.\objects\debug.o: ..\Source\Panle\panle.h
 .\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdarg.h

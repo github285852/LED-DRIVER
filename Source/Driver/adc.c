@@ -6,6 +6,7 @@
 
 u16 ADC1_BUFFER[BUFFER_NUMS]={0,0,0};
 u32 adc_data;
+float rfb[LED_CH] = {Rfb0,Rfb1,Rfb2,Rfb3,Rfb4};
 void ADC1Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -89,7 +90,7 @@ void DMA1_Channel1_IRQHandler(void)
   static unsigned char in_ch=0;
 	u32 temp_data[ADC_CH_NUMS]={0,0,0};
 	u32 t;
-	float q;
+//	float q;
 	if(DMA1->ISR&0x02)//DMA传输完成
 	{
 		for(i=5;i<MEAN_NUMS;i++)//去掉之前一个值
@@ -126,7 +127,7 @@ void DMA1_Channel1_IRQHandler(void)
 		{
 			I_true[in_ch] = ADCL[in_ch]/4096.0*3.3/OP2;//   *0.1*1000/OP2
 		}
-		I_true[in_ch] *= (1000.0/Rfb);
+		I_true[in_ch] *= (1000.0/rfb[in_ch]);
 		if(I_true[in_ch]<0.1)
 			I_true[in_ch] = 0;
 		in_ch++;

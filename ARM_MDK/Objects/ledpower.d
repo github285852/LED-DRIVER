@@ -3,7 +3,7 @@
 .\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\ledpower.o: ..\Source\SYSTEM\sys\sys.h
+.\objects\ledpower.o: ..\Source\Driver\malloc.h
 .\objects\ledpower.o: ..\Source\USER\stm32f10x.h
 .\objects\ledpower.o: ..\Source\CORE\core_cm3.h
 .\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,6 +33,7 @@
 .\objects\ledpower.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\ledpower.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\ledpower.o: ..\Source\STM32F10x_FWLib\inc\misc.h
+.\objects\ledpower.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\ledpower.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\ledpower.o: ..\Source\APP\scheduler.h
 .\objects\ledpower.o: ..\Source\Driver\pwm16.h
@@ -44,7 +45,9 @@
 .\objects\ledpower.o: ..\Source\APP\neuralpid.h
 .\objects\ledpower.o: ..\Source\Driver\key.h
 .\objects\ledpower.o: ..\Source\Driver\ledpower.h
-.\objects\ledpower.o: ..\Source\Driver\mcp4728.h
 .\objects\ledpower.o: ..\Source\Driver\mymath.h
 .\objects\ledpower.o: ..\Source\Driver\wdg.h
 .\objects\ledpower.o: ..\Source\Driver\debug.h
+.\objects\ledpower.o: ..\Source\Driver\rdm_slave.h
+.\objects\ledpower.o: ..\Source\Driver\rdm.h
+.\objects\ledpower.o: ..\Source\Panle\panle.h

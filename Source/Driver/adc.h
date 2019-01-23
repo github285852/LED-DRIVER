@@ -10,9 +10,9 @@
 #define SETB   PCout(1)
 #define SETC   PCout(2)
 #define SELECT(x)				{GPIOC->ODR &= 0xFFF8;GPIOC->ODR |= x;}
-#define OP1					20
-#define OP2					420
-#define Rfb					0.1
+//#define OP1					20
+//#define OP2					420
+//#define Rfb					0.1
 void ADC1Init(void);
 
 

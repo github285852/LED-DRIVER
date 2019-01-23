@@ -1,5 +1,14 @@
 #include "includes.h"
 #include "string.h"
+
+#if EN_RDM
+
+
+unsigned char *RDM_SendBuf=NULL;
+
+
+#endif
+
 u32 tim_over=0;
 u32 break_tim;
 //DMXData *DmxData;
@@ -90,6 +99,24 @@ void dmx512_init(void)
   USART_ITConfig(DMX_USART, USART_IT_RXNE, ENABLE);//开中断
 	USART_Cmd(DMX_USART, ENABLE);                    //使能串口 
 
+#if EN_RDM
+
+	DMX_USART->CR3 |=  0x80;//使能UART3 DMA发送
+	RDM_DMA_Channle->CPAR = (u32)&USART2->DR;
+	RDM_DMA_Channle->CMAR = (u32)RDM_SendBuf;
+	
+	RDM_DMA_Channle->CCR = 0x0090;    //8位，外设地址不变，存储递增，必须先关闭
+	RDM_DMA_Channle->CNDTR = 0;       //传输512次
+	//RDM_DMA_Channle->CCR |= 0x01;     //开启传输
+	RDM_DMA_Channle->CCR |= 0x02; //开启DMA传输中断
+	
+	NVIC_InitStructure.NVIC_IRQChannel = RDM_DMA_Channle_IRQn;			
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;	 
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;					
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;								
+  NVIC_Init(&NVIC_InitStructure);
+
+#endif
 	DMX_RXEN;	//默认为接收模式
 }
 
@@ -103,8 +130,10 @@ void DMX_EXTI_IRQHandler(void)
 			break_tim = tim_over*65535 + DMX_TIM->CNT;
 		  if((break_tim>=88)&&(break_tim<=1000000))
 			{
-			//	receiving_dmx_data();
-				
+				#if EN_RDM
+				RDM_RecevieRst(&led_drv_rdm_rev);
+				#endif
+				Sys.dmx_hanle = 1;
 //				if(USART_GetITStatus(DMX_USART, USART_IT_RXNE) != RESET) //接收到数据
 //				{	 
 //					USART_ReceiveData(DMX_USART); 	//读取接收到的数据
@@ -177,6 +206,9 @@ void DMX_USART_IRQHandler(void)
 				//	EXTI->IMR |= 0x00000040;
 			}
 		}
+		#if EN_RDM
+			RDM_Receive(&led_drv_rdm_rev,DMX512_RX_BUF);
+		#endif
 	}
 
 } 
@@ -234,3 +266,57 @@ void change_baude(void)
 	}
 }
 
+#if EN_RDM
+
+int MallocRDMTxBuf(unsigned short len)
+{
+	if(RDM_SendBuf != NULL)
+	{
+		Debug_printf(">>>%s:last \r\n",__FUNCTION__);
+		return 1;
+	}
+	RDM_SendBuf = (unsigned char *)mymalloc(SRAMIN,len);
+	if(RDM_SendBuf == NULL)
+	{
+		Debug_printf(">>>%s:mymalloc erro!\r\n",__FUNCTION__);
+		return 1;
+	}
+	return 0;
+}
+
+int RDMDMASend(unsigned char *buf,unsigned short len)
+{
+	int retry;
+	if(buf==NULL)
+		return 1;
+	DMX_TXEN;//发送模式
+	delay_us(200);
+	while((DMX_USART->SR&0X40)==0);//发送结束
+	while(RDM_DMA_Channle->CNDTR)//等待上一次传输完成
+	{
+		retry++;
+		if(retry>200)	return 1;
+	}
+	RDM_DMA_Channle->CCR &= ~DMA_CCR1_EN;//关闭通道
+  RDM_DMA_Channle->CMAR = (u32)buf;
+	RDM_DMA_Channle->CCR = 0x0090;    //8位，外设地址不变，存储递增，必须先关闭
+	RDM_DMA_Channle->CNDTR = len;   //传输512次
+	RDM_DMA_Channle->CCR |= DMA_CCR1_EN;     //开启传输
+	RDM_DMA_Channle->CCR |= 0x02; //开启DMA传输完成中断
+	return 0;
+}
+
+void RDM_DMA_Send_IRQHandler(void)
+{
+	if(RDM_DMA->ISR&RDM_DMA_ISR_TCIF)
+	{
+		myfree(SRAMIN,RDM_SendBuf);
+		RDM_SendBuf =  NULL;
+		RDM_DMA->IFCR |= RDM_DMA_ISR_TCIF;//清楚传输完成标志
+		RDM_DMA_Channle->CCR &= ~DMA_CCR1_EN;     //关闭传输
+		DMX_TX_GPIO->ODR |= DMX_TX_PIN;
+		DMX_RXEN;//接收模式
+	}
+}
+
+#endif

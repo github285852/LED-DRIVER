@@ -101,11 +101,11 @@ void debug_send_str(unsigned char *str)
 unsigned int pwm[32]={0,0};
 void uart_duty(void)
 {
-	unsigned char *p,*base_p;
+	char *p;
 	unsigned char cmd;
-	unsigned int h;
-	unsigned char s,i;
-	unsigned temp;
+//	unsigned int h;
+//	unsigned char s;
+//	unsigned temp;
 	float temp_f;
 	if(USART_RX_STA&0x8000)
 	{

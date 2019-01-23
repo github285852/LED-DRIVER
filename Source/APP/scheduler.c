@@ -33,19 +33,20 @@ void Loop_check()  //TIME INTTERRUPT 1ms÷¥––“ª¥Œ
 }
 
 float duty_time[6][2];
+int handle_dmx_data(void);
 void Duty_1ms(void)
 {
   
-  duty_time[0][1] = GetSysTime_us()/1000000.0f - duty_time[0][0];
-  IWDG_Feed();
-	duty_time[0][0] = GetSysTime_us()/1000000.0f;
+//  duty_time[0][1] = GetSysTime_us()/1000000.0f - duty_time[0][0];
+//	
+//	duty_time[0][0] = GetSysTime_us()/1000000.0f;
 }
 
 void Duty_2ms(void)
 {
   
   duty_time[1][1] = GetSysTime_us()/1000000.0f - duty_time[1][0];
-	//ledpower_task(duty_time[2][1]);
+	LedDrvRDMRecevieTask();
 	duty_time[1][0] = GetSysTime_us()/1000000.0f;
 }
 
@@ -53,8 +54,8 @@ void Duty_5ms(void)
 {
 	duty_time[2][1] = GetSysTime_us()/1000000.0f - duty_time[2][0];
 	ledpower_task(duty_time[2][1]);
-	DMX512_handle();
-		uart_duty();
+	uart_duty();
+
 	duty_time[2][0] = GetSysTime_us()/1000000.0f;
 }
 
@@ -64,10 +65,11 @@ void Duty_10ms(void)
 {
   duty_time[3][1] = GetSysTime_us()/1000000.0f - duty_time[3][0];
 	find_min_current_task();
+	handle_dmx_data();
 	duty_time[3][0] = GetSysTime_us()/1000000.0f;
 }
 extern long test_pos;
-void receiving_dmx_data(void);
+
 void Duty_20ms(void)
 {
 //  static int t = 0;
@@ -78,7 +80,7 @@ void Duty_20ms(void)
 //	}
 //	t = 0;
 	duty_time[4][0] = GetSysTime_us()/1000000.0f;
-	receiving_dmx_data();
+
   duty_time[4][1] = GetSysTime_us()/1000000.0f - duty_time[4][0];
 //	ucs8903_update_chanle(ucs8903_data);
 //	mcp4728_update_chanle(mcp4728_data);
@@ -90,6 +92,7 @@ void Duty_50ms(void)
 {
 	duty_time[5][0] = GetSysTime_us()/1000000.0f;
 	change_baude();
+	IWDG_Feed();
   duty_time[5][1] = GetSysTime_us()/1000000.0f - duty_time[5][0];
 }
 

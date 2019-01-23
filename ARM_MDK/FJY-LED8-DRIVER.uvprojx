@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -336,9 +336,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
+              <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER,PANLE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Source\APP;..\Source\CORE;..\Source\Driver;..\Source\STM32F10x_FWLib\inc;..\Source\SYSTEM\sys;..\Source\SYSTEM\delay;..\Source\USER</IncludePath>
+              <IncludePath>..\Source\APP;..\Source\CORE;..\Source\Driver;..\Source\STM32F10x_FWLib\inc;..\Source\SYSTEM\sys;..\Source\SYSTEM\delay;..\Source\USER;..\Source\Panle</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -482,6 +482,21 @@
               <FileType>1</FileType>
               <FilePath>..\Source\Driver\debug.c</FilePath>
             </File>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\Driver\malloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>rdm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\Driver\rdm.c</FilePath>
+            </File>
+            <File>
+              <FileName>rdm_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\Driver\rdm_slave.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -576,6 +591,16 @@
               <FileName>startup_stm32f10x_hd.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\Source\CORE\startup_stm32f10x_hd.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Panle</GroupName>
+          <Files>
+            <File>
+              <FileName>panle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\Panle\panle.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,7 +3,7 @@
 .\objects\main.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: ..\Source\SYSTEM\sys\sys.h
+.\objects\main.o: ..\Source\Driver\malloc.h
 .\objects\main.o: ..\Source\USER\stm32f10x.h
 .\objects\main.o: ..\Source\CORE\core_cm3.h
 .\objects\main.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,6 +33,7 @@
 .\objects\main.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\main.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\main.o: ..\Source\STM32F10x_FWLib\inc\misc.h
+.\objects\main.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\main.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\main.o: ..\Source\APP\scheduler.h
 .\objects\main.o: ..\Source\Driver\pwm16.h
@@ -44,7 +45,9 @@
 .\objects\main.o: ..\Source\APP\neuralpid.h
 .\objects\main.o: ..\Source\Driver\key.h
 .\objects\main.o: ..\Source\Driver\ledpower.h
-.\objects\main.o: ..\Source\Driver\mcp4728.h
 .\objects\main.o: ..\Source\Driver\mymath.h
 .\objects\main.o: ..\Source\Driver\wdg.h
 .\objects\main.o: ..\Source\Driver\debug.h
+.\objects\main.o: ..\Source\Driver\rdm_slave.h
+.\objects\main.o: ..\Source\Driver\rdm.h
+.\objects\main.o: ..\Source\Panle\panle.h

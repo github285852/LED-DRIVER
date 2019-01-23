@@ -91,7 +91,7 @@ void SetLedPowerOpen(u8 ch,u16 pwm)
 
 void SetLedPower(u8 ch,float mA)
 {
-	float pwm;
+//	float pwm;
 	if(ch<LED_CH)
 	{
 		#if NEURAL_PID
@@ -140,7 +140,7 @@ void limit(u16 x,u16 min ,u16 max)
 //单级PID 位置式
 void ledpower_task(float T)
 {
-  float temp;
+//  float temp;
 	int i;
 	for(i=0;i<LED_CH;i++)
 	{
@@ -163,9 +163,9 @@ void ledpower_task(float T)
 
 void find_min_current_task(void)
 {
-	int i,timer,tim;
+	int i,timer;
 	u16 out;
-	float error;
+//	float error;
 	if(Sys.f_find_min_pwm)
 	{
 		for(i=0;i<LED_CH;i++)

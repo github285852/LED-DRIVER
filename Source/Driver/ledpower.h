@@ -2,7 +2,7 @@
 #define __LEDPOWER_H
 
 #define PWM_MIN   	840
-#define PWM_MAX			10000
+#define PWM_MAX			9090
 
 
 /* MIN_CURRENT_MA  = MIN_I,全部用直流，闭环 */

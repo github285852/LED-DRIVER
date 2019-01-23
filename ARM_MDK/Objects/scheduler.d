@@ -35,6 +35,7 @@
 .\objects\scheduler.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\scheduler.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\scheduler.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\scheduler.o: ..\Source\Driver\malloc.h
 .\objects\scheduler.o: ..\Source\Driver\pwm16.h
 .\objects\scheduler.o: ..\Source\Driver\dmx512.h
 .\objects\scheduler.o: ..\Source\Driver\led.h
@@ -44,7 +45,9 @@
 .\objects\scheduler.o: ..\Source\APP\neuralpid.h
 .\objects\scheduler.o: ..\Source\Driver\key.h
 .\objects\scheduler.o: ..\Source\Driver\ledpower.h
-.\objects\scheduler.o: ..\Source\Driver\mcp4728.h
 .\objects\scheduler.o: ..\Source\Driver\mymath.h
 .\objects\scheduler.o: ..\Source\Driver\wdg.h
 .\objects\scheduler.o: ..\Source\Driver\debug.h
+.\objects\scheduler.o: ..\Source\Driver\rdm_slave.h
+.\objects\scheduler.o: ..\Source\Driver\rdm.h
+.\objects\scheduler.o: ..\Source\Panle\panle.h

@@ -6,7 +6,13 @@ CONFIG default_data =
 0
 };
 
-
+u16 EXP_PWM[LED_CH];
+float DMX_CTL_I[LED_CH];
+float Last_DMX_CTL_I[LED_CH];
+u16 I_changes=0;
+u8 sum_erro=0;
+u16 max_current[5]={MAX_CURRENT0,MAX_CURRENT1,MAX_CURRENT2,MAX_CURRENT3,MAX_CURRENT4};//mA
+float EXP_OUT_I[LED_CH];
 
 void GPIO_init(void)
 {
@@ -34,7 +40,7 @@ SYS Sys;
 extern float I_true[LED_CH];
 int main(void)
 {
-	int i;
+//	int i;
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	SysTick_Configuration();
 	GPIO_init();
@@ -45,6 +51,7 @@ int main(void)
 	dmx512_init();
 	ledpower_init();
   Debug_printf("LED DRIVER V1.0\r\n");
+	PanleInit();
 //	I_true[0] = 0;
 //	while(1)
 //	{
@@ -71,11 +78,8 @@ int main(void)
   }
   return 0;
 }
-u16 EXP_PWM[LED_CH];
-float DMX_CTL_I[LED_CH];
-u16 max_current[5]={MAX_CURRENT0,MAX_CURRENT1,MAX_CURRENT2,MAX_CURRENT3,MAX_CURRENT4};//mA
-float EXP_OUT_I[LED_CH];
-void receiving_dmx_data(void)
+
+int handle_dmx_data(void)
 {
 	int i;
 #if KEIL_DEBUG
@@ -87,10 +91,11 @@ void receiving_dmx_data(void)
 	#endif
 #else
 	u8 *p;
-	float temp_I;
+///	float temp_I;
 	unsigned char sum=0;
 	u16 data;
-	Sys.Config.addr = 1;
+	if(Sys.dmx_hanle==0)
+		return 0;
 	switch(DMX512_RX_BUF[0])
 	{
 		case 0:
@@ -100,7 +105,7 @@ void receiving_dmx_data(void)
 		{
 			sum += p[i];
 		}
-		if(p[i] == sum)
+		if(p[i] == sum)//
 		{
 			for(i=0;i<LED_CH;i++)
 			{
@@ -110,6 +115,9 @@ void receiving_dmx_data(void)
 				{
 					DMX_CTL_I[i] = max_current[i]*data/65536.0;
 					SetLedPower(i,DMX_CTL_I[i]);
+					if(Last_DMX_CTL_I[i] != DMX_CTL_I[i])
+						I_changes++;
+					Last_DMX_CTL_I[i] =  DMX_CTL_I[i];
 				}
 				else
 				{
@@ -124,11 +132,18 @@ void receiving_dmx_data(void)
 			else	
 				set_pwm(7,0);
 		}
+		else
+		{
+			sum_erro++;
+		}
 		break;
-		case 0xcc://RDM
-		break;
+		//case 0xcc://RDM
+
+		//break;
 		default:break;
 	}
 #endif
+	Sys.dmx_hanle = 0;
+	return 0;
 }
 
