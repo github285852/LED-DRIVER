@@ -34,7 +34,7 @@ const NeuralPID Initnpid=
 	.wki = 132578984,
 	.wkd = 62064808, //初始加权
 	.exp = 0,
-	.out = PWM_MIN,
+	.out = CAL_PWM_MIN,
 };
 NeuralPID I_npid[LED_CH];
 #endif
@@ -69,7 +69,7 @@ void ledpower_init(void)
 	#endif
 	for(i=0;i<LED_CH;i++)
 	{
-		CURRENT_MIN_PWM[i] = Sys.Config.current_min_pwm[i];
+		CURRENT_MIN_PWM[i] = Sys.Config.cal.current_min_pwm[i];
 		MIN_CURRENT[i] = MIN_CURRENT_MA;
 	}
 }
@@ -84,7 +84,7 @@ void SetLedPowerOpen(u8 ch,u16 pwm)
 	}
 	else
 	{
-		pwmout = pwm + Sys.Config.current_min_pwm[ch];
+		pwmout = pwm + Sys.Config.cal.current_min_pwm[ch];
 	}
 	set_pwm(ch,pwmout);
 }
@@ -104,7 +104,7 @@ void SetLedPower(u8 ch,float mA)
 			set_pwm(ch,0);
 			set_pwm(8+ch,0);
 			Sys.pid_on[ch] = 0;
-			I_npid[ch].out = PWM_MIN;
+			I_npid[ch].out = CURRENT_MIN_PWM[ch];
 //			pwm_out[ch] = PWM_MIN;
 			pwm_out[ch]  = CURRENT_MIN_PWM[ch];
 		}
@@ -148,7 +148,7 @@ void ledpower_task(float T)
 		{
 			#if NEURAL_PID
 			pwm_out[i] = (u16)SignleNeuralAdaptivPID(&I_npid[i],I_true[i]);//返回的是累计值
-			LIMIT(pwm_out[i],PWM_MIN,PWM_MAX);
+			pwm_out[i] = LIMIT(pwm_out[i],CURRENT_MIN_PWM[i],PWM_MAX);
 			set_pwm(i,pwm_out[i]);
 			#else
 			temp = PID_PosLocCalc(&Pid_I_true[i],I_true[i],65535,T);//返回的是增量
@@ -161,34 +161,69 @@ void ledpower_task(float T)
 	}
 }
 
-void find_min_current_task(void)
+
+void CurrentOpenLoopOut(u8 ch,u16 pwm)
+{
+	Sys.pid_on[ch] = 0;
+	set_pwm(ch,pwm);
+}
+
+void AutoCalibrateTask(void)
 {
 	int i,timer;
 	u16 out;
+	float temp_i;
 //	float error;
-	if(Sys.f_find_min_pwm)
+	if(Sys.AutoCal)
 	{
+		Debug_printf("CAL>>>Start\r\n");
+		/* 全部关闭,求得最小电流*/
 		for(i=0;i<LED_CH;i++)
 		{
-			out = 800;
-			MIN_CURRENT[i] = I_true[i]; //当电流非常小时获取，
-			//MIN_CURRENT[i] = 0;
-//			SetLedPower(i,MIN_CURRENT_MA);
-//			Sys.pid_on[i] = 1;
-//			timer = 0;
-//			tim =0;
+			CurrentOpenLoopOut(i,0);
+		}
+		delay_ms(500);
+		IWDG_Feed();//喂狗
+		for(i=0;i<LED_CH;i++)
+		{
+			Sys.Config.cal.min_current[i] = I_true[i];
+			Debug_printf("CAL>>> min_current[%d]=%0.2f\r\n",i,Sys.Config.cal.min_current[i]);
+		}
+		/* 逐个打开，求得最大电流*/
+		for(i=0;i<LED_CH;i++)
+		{
+			CurrentOpenLoopOut(i,CAL_MAX_PWM);
+			delay_ms(500);
+			IWDG_Feed();//喂狗
+			delay_ms(500);
+			IWDG_Feed();//喂狗
+			delay_ms(500);
+			IWDG_Feed();//喂狗
+			Sys.Config.cal.max_current[i] = I_true[i];
+			Debug_printf("CAL>>> max_current[%d]=%0.2f\r\n",i,Sys.Config.cal.max_current[i]);
+			CurrentOpenLoopOut(i,0);
+		}
+		/* 全部关闭,求得最小电流时的PWM*/
+		for(i=0;i<LED_CH;i++)
+		{
+			CurrentOpenLoopOut(i,0);
+		}
+		for(i=0;i<LED_CH;i++)
+		{
+			out = CAL_PWM_MIN;
+			temp_i = I_true[i]; //当电流非常小时获取，
 			while(1)
 			{
 					IWDG_Feed();//喂狗
 					set_pwm(i,out);
-					delay_ms(10);
-					if((I_true[i]-MIN_CURRENT[i])> 0.1)
+					delay_ms(100);
+					if((I_true[i]- temp_i)> 0.4)
 					{
 						timer++;
 						if(timer>200)
 						{
-							MIN_CURRENT[i] = MIN_CURRENT_MA;
-							Sys.Config.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out;
+							Sys.Config.cal.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out-10;
+							Debug_printf("CAL>>> current_min_pwm[%d]=%d\r\n",i,Sys.Config.cal.current_min_pwm[i]);
 							break;
 						}
 					}
@@ -196,35 +231,11 @@ void find_min_current_task(void)
 					{
 						out++;
 					}
-//				ledpower_task(0);
-//				IWDG_Feed();//喂狗
-//				delay_ms(5);
-//				tim++;
-//				if(tim>2000)
-//				{
-//				//错误，10S还没调好，
-//				}
-//				#if NEURAL_PID
-//				error = I_npid[i].error;
-//				out = I_npid[i].out;
-//				#else
-//				erro = Pid_I_true[i].LastError;
-//				out = pwm_out[i];
-//				#endif
-//				if((error)<0.1)//误差比较小
-//				{
-//					timer++;
-//					if(timer>200)//持续1S
-//					{
-//						MIN_CURRENT[i] = MIN_CURRENT_MA;
-//						Sys.Config.current_min_pwm[i] = CURRENT_MIN_PWM[i] = out;
-//						break;
-//					}
-//				}
 			}
 		}
 		SaveConfig();
-		Sys.f_find_min_pwm = 0;
+		Sys.AutoCal = 0;
+		Debug_printf("CAL>>>End\r\n");
 	}
 }
 

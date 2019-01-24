@@ -47,6 +47,7 @@ void Duty_2ms(void)
   
   duty_time[1][1] = GetSysTime_us()/1000000.0f - duty_time[1][0];
 	LedDrvRDMRecevieTask();
+	handle_dmx_data();
 	duty_time[1][0] = GetSysTime_us()/1000000.0f;
 }
 
@@ -64,8 +65,8 @@ u8 KEY;
 void Duty_10ms(void)
 {
   duty_time[3][1] = GetSysTime_us()/1000000.0f - duty_time[3][0];
-	find_min_current_task();
-	handle_dmx_data();
+	AutoCalibrateTask();
+
 	duty_time[3][0] = GetSysTime_us()/1000000.0f;
 }
 extern long test_pos;

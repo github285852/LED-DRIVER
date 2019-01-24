@@ -56,7 +56,7 @@ int GetCmdResponse(RDM_PRE *rx_rdmpre,RDM_MDB *rx_mdb)
 			tx_rdmpre.Length = 24 + tx_mdb.DataLength ;
 			dmx_len = tx_rdmpre.Length + 2;
 			
-			if(MallocRDMTxBuf(dmx_len+4))//DMA 发送问题
+			if(MallocRDMTxBuf(dmx_len))//DMA 发送问题
 				return 1;		
 			Sys.status.Code = 0x1234;
 			Sys.status.Temp = 205;
@@ -74,7 +74,7 @@ int GetCmdResponse(RDM_PRE *rx_rdmpre,RDM_MDB *rx_mdb)
 	}
 	RDM_SendBuf[i] = sum >> 8;
 	RDM_SendBuf[i+1] = sum & 0x00FF;
-	RDMDMASend(RDM_SendBuf,dmx_len+2);
+	RDMDMASend(RDM_SendBuf,dmx_len);
 	return 0;
 }
 

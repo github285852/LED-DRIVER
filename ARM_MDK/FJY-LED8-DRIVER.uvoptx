@@ -198,77 +198,77 @@
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sys.f_find_min_pwm</ItemText>
+          <ItemText>MIN_CURRENT</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MIN_CURRENT</ItemText>
+          <ItemText>CURRENT_MIN_PWM,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CURRENT_MIN_PWM,0x0A</ItemText>
+          <ItemText>EXP_PWM,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>EXP_PWM,0x0A</ItemText>
+          <ItemText>I_lpf</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>I_lpf</ItemText>
+          <ItemText>DMX_CTL_I</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DMX_CTL_I</ItemText>
+          <ItemText>DMX512_RX_BUF</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DMX512_RX_BUF</ItemText>
+          <ItemText>tim,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tim,0x0A</ItemText>
+          <ItemText>baude,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>1</WinNumber>
-          <ItemText>baude,0x0A</ItemText>
+          <ItemText>DMX512_RX_BUF,0x10</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DMX512_RX_BUF,0x10</ItemText>
+          <ItemText>\\FJY_LED8_DRIVER\../Source/USER/main.c\EXP_PWM[0]</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\FJY_LED8_DRIVER\../Source/USER/main.c\EXP_PWM[0]</ItemText>
+          <ItemText>Sys,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sys,0x0A</ItemText>
+          <ItemText>sum_erro,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sum_erro,0x0A</ItemText>
+          <ItemText>I_changes,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>1</WinNumber>
-          <ItemText>I_changes,0x0A</ItemText>
+          <ItemText>led_drv_rdm_rev.handle</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>1</WinNumber>
-          <ItemText>led_drv_rdm_rev.handle</ItemText>
+          <ItemText>loop.cnt_50ms,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -814,7 +814,7 @@
 
   <Group>
     <GroupName>Panle</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

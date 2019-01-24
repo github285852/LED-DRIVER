@@ -130,6 +130,17 @@ void DMA1_Channel1_IRQHandler(void)
 		I_true[in_ch] *= (1000.0/rfb[in_ch]);
 		if(I_true[in_ch]<0.1)
 			I_true[in_ch] = 0;
+		if(Sys.AutoCal==0)
+		{
+			if(I_true[i]>Sys.Config.cal.min_current[i])
+			{
+				I_true[i] -= Sys.Config.cal.min_current[i];
+			}
+			else
+			{
+				I_true[i] = 0;
+			}
+		}
 		in_ch++;
 		if(in_ch>=LED_CH)
 		{

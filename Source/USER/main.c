@@ -1,10 +1,12 @@
 #include "includes.h"
 
-
+u8 DMX512_DATA_BUF[513];
 CONFIG default_data = 
 {
 0
 };
+SYS Sys;
+extern float I_true[LED_CH];
 
 u16 EXP_PWM[LED_CH];
 float DMX_CTL_I[LED_CH];
@@ -36,8 +38,6 @@ void GPIO_init(void)
  	GPIO_Init(GPIOA, &GPIO_InitStructure);//
 }
 
-SYS Sys;
-extern float I_true[LED_CH];
 int main(void)
 {
 //	int i;
@@ -70,7 +70,7 @@ int main(void)
 	{
 		delay_ms(10);
 		if(I_CHECK_PIN==0) //找出电流等于零的临界值
-			Sys.f_find_min_pwm = 1;
+			Sys.AutoCal = 1;
 	}
   while(1)
   {		
@@ -96,11 +96,11 @@ int handle_dmx_data(void)
 	u16 data;
 	if(Sys.dmx_hanle==0)
 		return 0;
-	switch(DMX512_RX_BUF[0])
+	switch(DMX512_DATA_BUF[0])
 	{
 		case 0:
 		case 1:
-		p = &DMX512_RX_BUF[Sys.Config.addr];
+		p = &DMX512_DATA_BUF[Sys.Config.addr];
 		for(i=0;i<16;i++)
 		{
 			sum += p[i];
@@ -111,9 +111,9 @@ int handle_dmx_data(void)
 			{
 				data = *(p+i*2)<<8 | *(p+i*2+1);
 				
-				if(DMX512_RX_BUF[0]==0)
+				if(DMX512_DATA_BUF[0]==0)
 				{
-					DMX_CTL_I[i] = max_current[i]*data/65536.0;
+					DMX_CTL_I[i] = Sys.Config.cal.max_current[i]*data/65536.0;
 					SetLedPower(i,DMX_CTL_I[i]);
 					if(Last_DMX_CTL_I[i] != DMX_CTL_I[i])
 						I_changes++;

@@ -36,20 +36,29 @@
 #define NEURAL_PID	1
 
 #define DEBUG			1
-#define CONFIG_ADDRESS          0x0803F000
 
+#define CONFIG_SIZE							(1024*5)
+#define CONFIG_ADDRESS          (0x0807FFFF + 1 - CONFIG_SIZE)
+
+
+typedef struct{
+	u16 current_min_pwm[LED_CH];//LED直流最小PWM
+	float max_current[LED_CH]; //各通道最大电流
+	float min_current[LED_CH];////各通道最小电流
+}CAL;
 
 typedef struct 
 {
 	u8 addr;
-	u16 current_min_pwm[LED_CH];//LED直流最小PWM
+	CAL cal;
 	u32 check;
 }CONFIG;
+
 
 typedef struct
 {
 	u8 pid_on[LED_CH];
-	u8 f_find_min_pwm;
+	u8 AutoCal;
 	u8 dmx_hanle;
 	unsigned char UID[ID_LEN];
 	STATUS status;

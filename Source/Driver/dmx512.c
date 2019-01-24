@@ -48,7 +48,7 @@ void dmx512_init(void)
    
   //USART1_RX	  GPIOA.10初始化
   GPIO_InitStructure.GPIO_Pin = DMX_RX_PIN;//PA10
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//上拉输入
   GPIO_Init(DMX_RX_GPIO, &GPIO_InitStructure);//初始化GPIOA.10  
 	
 	GPIO_EXTILineConfig(DMX_GPIO_PortSource,DMX_EXTI_PinSource);
@@ -111,7 +111,7 @@ void dmx512_init(void)
 	RDM_DMA_Channle->CCR |= 0x02; //开启DMA传输中断
 	
 	NVIC_InitStructure.NVIC_IRQChannel = RDM_DMA_Channle_IRQn;			
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;	 
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x03;	 
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;					
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;								
   NVIC_Init(&NVIC_InitStructure);
@@ -121,9 +121,10 @@ void dmx512_init(void)
 }
 
 u16 tim;
+extern u8 DMX512_DATA_BUF[513];
 void DMX_EXTI_IRQHandler(void)
 {
-	static u8 last_sum;
+//static u8 last_sum;
 	 //if(PAin(2)==0)//
 	if(DMX_RX_GPIO->IDR&DMX_RX_PIN)//上升沿
 	{
@@ -134,16 +135,14 @@ void DMX_EXTI_IRQHandler(void)
 				RDM_RecevieRst(&led_drv_rdm_rev);
 				#endif
 				Sys.dmx_hanle = 1;
-//				if(USART_GetITStatus(DMX_USART, USART_IT_RXNE) != RESET) //接收到数据
-//				{	 
-//					USART_ReceiveData(DMX_USART); 	//读取接收到的数据
-//				}
-				if(last_sum != TEST_SUM)
-					SUM_CNT++;
-				last_sum = TEST_SUM;
-				TEST_SUM = 0;
-				tim = break_tim;
+				memcpy(DMX512_DATA_BUF,DMX512_RX_BUF,DMX512_RX_CNT);
 				DMX512_RX_CNT =0;
+//				if(last_sum != TEST_SUM)
+//					SUM_CNT++;
+//				last_sum = TEST_SUM;
+//				TEST_SUM = 0;
+//				tim = break_tim;
+
 				//屏蔽外部中断10
 				//EXTI->IMR &= 0xffffffbf;
 				/*
@@ -206,6 +205,7 @@ void DMX_USART_IRQHandler(void)
 				//	EXTI->IMR |= 0x00000040;
 			}
 		}
+		
 		#if EN_RDM
 			RDM_Receive(&led_drv_rdm_rev,DMX512_RX_BUF);
 		#endif
@@ -286,17 +286,14 @@ int MallocRDMTxBuf(unsigned short len)
 
 int RDMDMASend(unsigned char *buf,unsigned short len)
 {
-	int retry;
 	if(buf==NULL)
 		return 1;
 	DMX_TXEN;//发送模式
 	delay_us(200);
-	while((DMX_USART->SR&0X40)==0);//发送结束
 	while(RDM_DMA_Channle->CNDTR)//等待上一次传输完成
 	{
-		retry++;
-		if(retry>200)	return 1;
 	}
+	while((DMX_USART->SR&0X40)==0);//发送结束
 	RDM_DMA_Channle->CCR &= ~DMA_CCR1_EN;//关闭通道
   RDM_DMA_Channle->CMAR = (u32)buf;
 	RDM_DMA_Channle->CCR = 0x0090;    //8位，外设地址不变，存储递增，必须先关闭
@@ -313,8 +310,9 @@ void RDM_DMA_Send_IRQHandler(void)
 		myfree(SRAMIN,RDM_SendBuf);
 		RDM_SendBuf =  NULL;
 		RDM_DMA->IFCR |= RDM_DMA_ISR_TCIF;//清楚传输完成标志
-		RDM_DMA_Channle->CCR &= ~DMA_CCR1_EN;     //关闭传输
-		DMX_TX_GPIO->ODR |= DMX_TX_PIN;
+		RDM_DMA_Channle->CCR &= ~DMA_CCR1_EN;     //关闭传输//这个时候和两个字节没传输完
+		while((DMX_USART->SR&0X40)==0);//发送结束
+		//DMX_TX_GPIO->ODR |= DMX_TX_PIN;
 		DMX_RXEN;//接收模式
 	}
 }
