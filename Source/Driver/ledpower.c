@@ -39,6 +39,7 @@ const NeuralPID Initnpid=
 NeuralPID I_npid[LED_CH];
 #endif
 
+extern float EXP_OUT_I[LED_CH];
 
 void ledpower_init(void)
 {
@@ -47,6 +48,7 @@ void ledpower_init(void)
 	for(i=0;i<LED_CH;i++)
 	{
 		I_npid[i] = Initnpid;
+		EXP_OUT_I[i] = 0;
 	}
 	#else
 	for(i=1;i<4;i++)

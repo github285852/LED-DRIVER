@@ -7,14 +7,14 @@ CONFIG default_data =
 };
 SYS Sys;
 extern float I_true[LED_CH];
-
+float EXP_OUT_I[LED_CH]={0.0,0.0,0.0,0.0,0.0};
 u16 EXP_PWM[LED_CH];
 float DMX_CTL_I[LED_CH];
 float Last_DMX_CTL_I[LED_CH];
 u16 I_changes=0;
 u8 sum_erro=0;
 u16 max_current[5]={MAX_CURRENT0,MAX_CURRENT1,MAX_CURRENT2,MAX_CURRENT3,MAX_CURRENT4};//mA
-float EXP_OUT_I[LED_CH];
+
 
 void GPIO_init(void)
 {
