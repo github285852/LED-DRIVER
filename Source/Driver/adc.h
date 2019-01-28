@@ -4,7 +4,7 @@
 
 #define MEAN_NUMS 10
 #define ADC_CH_NUMS	3
-#define BUFFER_NUMS  30
+#define BUFFER_NUMS  (ADC_CH_NUMS*MEAN_NUMS)
 
 #define SETA   PCout(0)
 #define SETB   PCout(1)

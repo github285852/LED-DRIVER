@@ -66,7 +66,7 @@ void Duty_10ms(void)
 {
   duty_time[3][1] = GetSysTime_us()/1000000.0f - duty_time[3][0];
 	AutoCalibrateTask();
-
+//	ledpower_task(duty_time[2][1]);
 	duty_time[3][0] = GetSysTime_us()/1000000.0f;
 }
 extern long test_pos;

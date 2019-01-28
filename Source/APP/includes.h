@@ -31,13 +31,13 @@
 
 #endif
 
-#define KEIL_DEBUG	1
+#define KEIL_DEBUG	0
 #define DEBUG_I_OUT	1
 #define NEURAL_PID	1
 
 #define DEBUG			1
 
-#define CONFIG_SIZE							(1024*10)
+#define CONFIG_SIZE							(1024*5)
 #define CONFIG_ADDRESS          (0x0807FFFF + 1 - CONFIG_SIZE)
 
 

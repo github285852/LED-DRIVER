@@ -106,19 +106,12 @@ void SetLedPower(u8 ch,float mA)
 			set_pwm(ch,0);
 			set_pwm(8+ch,0);
 			Sys.pid_on[ch] = 0;
+			#if NEURAL_PID
 			I_npid[ch].out = CURRENT_MIN_PWM[ch];
+			#endif
 //			pwm_out[ch] = PWM_MIN;
 			pwm_out[ch]  = CURRENT_MIN_PWM[ch];
 		}
-//		else if(mA<MIN_CURRENT[ch])
-//		{
-//			pwm = TARR1 - TARR1*mA/MIN_CURRENT[ch];  //导通相当于关闭LED
-//			set_pwm(ch,CURRENT_MIN_PWM[ch]);
-//			set_pwm(8+ch,pwm);
-//			Sys.pid_on[ch] = 0;
-//			I_npid[ch].out = CURRENT_MIN_PWM[ch];
-//			pwm_out[ch] = CURRENT_MIN_PWM[ch];
-//		}
 		else 
 		{
 			set_pwm(ch+8,0);
@@ -142,7 +135,7 @@ void limit(u16 x,u16 min ,u16 max)
 //单级PID 位置式
 void ledpower_task(float T)
 {
-//  float temp;
+  float temp;
 	int i;
 	for(i=0;i<LED_CH;i++)
 	{
@@ -156,7 +149,7 @@ void ledpower_task(float T)
 			temp = PID_PosLocCalc(&Pid_I_true[i],I_true[i],65535,T);//返回的是增量
 			pwm_out[i] += temp;
 			
-			pwm_out[i] = LIMIT(pwm_out[i],PWM_MIN,PWM_MAX);
+			pwm_out[i] = LIMIT(pwm_out[i],CURRENT_MIN_PWM[i],PWM_MAX);
 			set_pwm(i,pwm_out[i]);
 			#endif
 		}

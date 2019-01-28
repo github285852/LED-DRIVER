@@ -63,10 +63,10 @@ int main(void)
 //	}
 //	
 	//set_pwm(0,1294);
-	//IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
+	IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
 	//显示
 	//自我矫正最小直流PWM
-	if(I_CHECK_PIN==1)
+	if(I_CHECK_PIN==0)
 	{
 		delay_ms(10);
 		if(I_CHECK_PIN==0) //找出电流等于零的临界值
