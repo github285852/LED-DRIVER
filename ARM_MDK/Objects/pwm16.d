@@ -3,7 +3,7 @@
 .\objects\pwm16.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\pwm16.o: ..\Source\USER\stm32f10x.h
 .\objects\pwm16.o: ..\Source\CORE\core_cm3.h
-.\objects\pwm16.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwm16.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pwm16.o: ..\Source\USER\system_stm32f10x.h
 .\objects\pwm16.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\pwm16.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

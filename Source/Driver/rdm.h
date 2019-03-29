@@ -25,6 +25,7 @@
 
 
 #define PID_STATUS			0
+#define	PID_SET_ADDR		1
 
 
 typedef struct{

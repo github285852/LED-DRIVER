@@ -1,5 +1,7 @@
 
 #include "includes.h"
+
+
 PID Pid_I_true[LED_CH];
 PID Pid_I_lpf[LED_CH];
 unsigned int pwm_out[LED_CH];
@@ -26,7 +28,7 @@ u16 CURRENT_MIN_PWM[LED_CH]={815,815,870,815,815};
 const NeuralPID Initnpid=
 {
 	.M = 1,
-	.MK = 2,
+//	.MK = 2,
 	.xiteP = 0.50,
 	.xiteI = 0.25,
 	.xiteD = 0.50,
@@ -48,6 +50,7 @@ void ledpower_init(void)
 	for(i=0;i<LED_CH;i++)
 	{
 		I_npid[i] = Initnpid;
+		I_npid[i].MK = PID_MK_TAB[i];
 		EXP_OUT_I[i] = 0;
 	}
 	#else
@@ -135,15 +138,18 @@ void limit(u16 x,u16 min ,u16 max)
 //单级PID 位置式
 void ledpower_task(float T)
 {
+	#if !(NEURAL_PID)
   float temp;
+	#endif
 	int i;
 	for(i=0;i<LED_CH;i++)
 	{
 		if(Sys.pid_on[i])
 		{
 			#if NEURAL_PID
-			pwm_out[i] = (u16)SignleNeuralAdaptivPID(&I_npid[i],I_true[i]);//返回的是累计值
-			pwm_out[i] = LIMIT(pwm_out[i],CURRENT_MIN_PWM[i],PWM_MAX);
+			SignleNeuralAdaptivPID(&I_npid[i],I_true[i]);//返回的是累计值
+			I_npid[i].out = LIMIT(I_npid[i].out,CAL_PWM_MIN,PWM_MAX);
+			pwm_out[i] = I_npid[i].out;
 			set_pwm(i,pwm_out[i]);
 			#else
 			temp = PID_PosLocCalc(&Pid_I_true[i],I_true[i],65535,T);//返回的是增量

@@ -33,7 +33,7 @@ void Loop_check()  //TIME INTTERRUPT 1ms÷¥––“ª¥Œ
 }
 
 float duty_time[6][2];
-int handle_dmx_data(void);
+
 void Duty_1ms(void)
 {
   
@@ -46,7 +46,9 @@ void Duty_2ms(void)
 {
   
   duty_time[1][1] = GetSysTime_us()/1000000.0f - duty_time[1][0];
+	#if defined (PANLE)
 	LedDrvRDMRecevieTask();
+	#endif
 	handle_dmx_data();
 	duty_time[1][0] = GetSysTime_us()/1000000.0f;
 }

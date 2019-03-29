@@ -63,6 +63,20 @@ int GetCmdResponse(RDM_PRE *rx_rdmpre,RDM_MDB *rx_mdb)
 			memcpy(RDM_SendBuf + 24,(char *)&Sys.status,tx_mdb.DataLength);
 			break;
 		}
+//		case PID_SET_ADDR: //设置地址
+//		{
+//			tx_mdb.Parameter = PID_SET_ADDR;
+//			tx_mdb.DataLength = 0;
+
+//			tx_rdmpre.Length = 24 + tx_mdb.DataLength ;
+//			dmx_len = tx_rdmpre.Length + 2;
+//			//
+//			Sys.Config.addr = (u8)rx_mdb->pData[0];
+//			//
+//			if(MallocRDMTxBuf(dmx_len))//DMA 发送问题
+//				return 1;	
+//			break;
+//		}
 		default :break;
 	}
 	

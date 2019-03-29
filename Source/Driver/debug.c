@@ -98,6 +98,44 @@ void debug_send_str(unsigned char *str)
 	}		
 }
 
+/*
+FUNCTION:判定该字符串是命令
+INPUT:buf,要判别的字符，cmd 判定的命令。params,参数个数
+OUTPUT:param,取得的参数 指针
+RETURN：1,是该命令
+命令后面直接跟参数，参数之间用','隔开
+*/
+int IsCmd(unsigned char *buf,char *cmd,u8 params,float *param)
+{
+	char *p;
+	int i = 0;
+	p = strstr((const char*)buf,(const char*)cmd);
+	if(p != NULL)
+	{	
+		p += strlen(cmd);
+		while(i<params)
+		{
+			param[i] = atof((const char*)p);
+			p = strstr((const char*)p,(const char*)",");
+			if( p!= NULL)
+			{
+				i++;
+				p++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+
 unsigned int pwm[32]={0,0};
 void uart_duty(void)
 {
@@ -154,7 +192,10 @@ void uart_duty(void)
 			else
 				Debug_printf("ERROR\r\n");
 		}	
-		
+		if(IsCmd(USART_RX_BUF,"CHECK",0,NULL))
+		{
+			Sys.AutoCal = 1;
+		}
 		USART_RX_STA=0;  
 	}
 }

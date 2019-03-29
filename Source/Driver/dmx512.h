@@ -1,9 +1,9 @@
 #ifndef __DMX512_H
 #define __DMX512_H
 
-
+#if defined PANLE
 #define EN_RDM	1
-
+#endif
 
 #define DMX_USART											USART2
 #define RCC_APB1Periph_DMX_USART			RCC_APB1Periph_USART2
@@ -54,7 +54,7 @@ extern unsigned char *RDM_SendBuf;
 void dmx512_init(void);
 void DMX512_handle(void);
 extern unsigned char DMX512_RX_BUF[513];
-
+extern unsigned char DMX512_DATA_BUF[513];
 void uart_duty(void);
 void rs485_send_str(unsigned char *str);
 void rs485_send_buf(unsigned char *buf,char len);

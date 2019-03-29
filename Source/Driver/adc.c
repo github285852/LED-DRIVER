@@ -4,9 +4,9 @@
 #include "adc.h"
 #include "math.h"
 
-u16 ADC1_BUFFER[BUFFER_NUMS]={0,0,0};
+u16 ADC1_BUFFER[BUFFER_NUMS+160];// __attribute__((at(0X20000000 + 0xC000-160)));
 u32 adc_data;
-float rfb[LED_CH] = {Rfb0,Rfb1,Rfb2,Rfb3,Rfb4};
+float rfb[7] = {Rfb0,Rfb1,Rfb2,Rfb3,Rfb4,Rfb5,Rfb6};
 void ADC1Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -72,6 +72,8 @@ void slect_ch(unsigned char ch)
 		case 2:SETA = 0;SETB = 1;SETC = 0;break;
 		case 3:SETA = 1;SETB = 1;SETC = 0;break;
 		case 4:SETA = 0;SETB = 0;SETC = 1;break;
+		case 5:SETA = 1;SETB = 0;SETC = 1;break;
+		case 6:SETA = 0;SETB = 1;SETC = 1;break;
 		default :break;
 	}
 }
@@ -89,7 +91,7 @@ void DMA1_Channel1_IRQHandler(void)
 	int i,j,pos;
   static unsigned char in_ch=0;
 	u32 temp_data[ADC_CH_NUMS]={0,0,0};
-	u32 t;
+//	u32 t;
 //	float q;
 	if(DMA1->ISR&0x02)//DMA传输完成
 	{
@@ -145,9 +147,9 @@ void DMA1_Channel1_IRQHandler(void)
 		if(in_ch>=LED_CH)
 		{
 			in_ch = 0;
-			t = GetSysTime_us();
-			tim1 = t - last_t;
-			last_t = t;
+//			t = GetSysTime_us();
+//			tim1 = t - last_t;
+//			last_t = t;
 		//	q = (2*3.14159*tim1)/10000.0f;
 			for(i=0;i<LED_CH;i++)
 			{
@@ -156,7 +158,7 @@ void DMA1_Channel1_IRQHandler(void)
 			//
 		}
 		slect_ch(in_ch);//
-		//slect_ch(0);//
+	//	slect_ch(4);//
 		DMA1->IFCR|= 0x02;//清楚标志
 	}
 }

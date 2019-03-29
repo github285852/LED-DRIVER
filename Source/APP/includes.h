@@ -25,14 +25,19 @@
 #include "debug.h"
 #include "rdm_slave.h"
 
+
 #if defined PANLE
 
 #include "panle.h"
 
+#elif defined SPOT
+
+#include "spot.h"
+
 #endif
 
 #define KEIL_DEBUG	0
-#define DEBUG_I_OUT	1
+#define DEBUG_I_OUT	0
 #define NEURAL_PID	1
 
 #define DEBUG			1

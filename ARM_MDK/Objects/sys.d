@@ -2,7 +2,7 @@
 .\objects\sys.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\sys.o: ..\Source\USER\stm32f10x.h
 .\objects\sys.o: ..\Source\CORE\core_cm3.h
-.\objects\sys.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sys.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sys.o: ..\Source\USER\system_stm32f10x.h
 .\objects\sys.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\sys.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -31,7 +31,7 @@
 .\objects\sys.o: ..\Source\STM32F10x_FWLib\inc\misc.h
 .\objects\sys.o: ..\Source\SYSTEM\delay\delay.h
 .\objects\sys.o: ..\Source\Driver\dmx512.h
-.\objects\sys.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\objects\sys.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\sys.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\sys.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\sys.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\sys.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sys.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sys.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h

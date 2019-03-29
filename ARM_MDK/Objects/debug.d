@@ -2,7 +2,7 @@
 .\objects\debug.o: ..\Source\Driver\debug.h
 .\objects\debug.o: ..\Source\USER\stm32f10x.h
 .\objects\debug.o: ..\Source\CORE\core_cm3.h
-.\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\debug.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\debug.o: ..\Source\USER\system_stm32f10x.h
 .\objects\debug.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\debug.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -29,9 +29,9 @@
 .\objects\debug.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_usart.h
 .\objects\debug.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\debug.o: ..\Source\STM32F10x_FWLib\inc\misc.h
-.\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\debug.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\debug.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\debug.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\debug.o: ..\Source\APP\includes.h
 .\objects\debug.o: ..\Source\Driver\malloc.h
 .\objects\debug.o: ..\Source\SYSTEM\sys\sys.h
@@ -51,4 +51,4 @@
 .\objects\debug.o: ..\Source\Driver\rdm_slave.h
 .\objects\debug.o: ..\Source\Driver\rdm.h
 .\objects\debug.o: ..\Source\Panle\panle.h
-.\objects\debug.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\debug.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdarg.h

@@ -1,12 +1,12 @@
 .\objects\ledpower.o: ..\Source\Driver\ledpower.c
 .\objects\ledpower.o: ..\Source\APP\includes.h
-.\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ledpower.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ledpower.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ledpower.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\ledpower.o: ..\Source\Driver\malloc.h
 .\objects\ledpower.o: ..\Source\USER\stm32f10x.h
 .\objects\ledpower.o: ..\Source\CORE\core_cm3.h
-.\objects\ledpower.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ledpower.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ledpower.o: ..\Source\USER\system_stm32f10x.h
 .\objects\ledpower.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\ledpower.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

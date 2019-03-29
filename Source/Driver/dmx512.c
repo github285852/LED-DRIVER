@@ -13,7 +13,9 @@ u32 tim_over=0;
 u32 break_tim;
 //DMXData *DmxData;
 //接收缓存区 	
-u8 DMX512_RX_BUF[513]={1,2,2};  	//接收缓冲,最大513个字节.
+u8 DMX512_DATA_BUF[513]= {1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17};
+u8 DMX512_RX_BUF[513]={1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17};  	//接收缓冲,最大513个字节.
+
 //接收到的数据长度
 u16 DMX512_RX_CNT=0;   	
 u8 TEST_SUM;
@@ -121,11 +123,11 @@ void dmx512_init(void)
 }
 
 u16 tim;
-extern u8 DMX512_DATA_BUF[513];
 void DMX_EXTI_IRQHandler(void)
 {
 //static u8 last_sum;
 	 //if(PAin(2)==0)//
+	u16 t;
 	if(DMX_RX_GPIO->IDR&DMX_RX_PIN)//上升沿
 	{
 			break_tim = tim_over*65535 + DMX_TIM->CNT;
@@ -135,13 +137,19 @@ void DMX_EXTI_IRQHandler(void)
 				RDM_RecevieRst(&led_drv_rdm_rev);
 				#endif
 				Sys.dmx_hanle = 1;
+				t = GetSysTime_us();
+		
 				memcpy(DMX512_DATA_BUF,DMX512_RX_BUF,DMX512_RX_CNT);
+				
+				tim = GetSysTime_us() - t;
+				if(tim>5)
+					DMX512_RX_CNT =0;
 				DMX512_RX_CNT =0;
 //				if(last_sum != TEST_SUM)
 //					SUM_CNT++;
 //				last_sum = TEST_SUM;
 //				TEST_SUM = 0;
-//				tim = break_tim;
+	//			tim = break_tim;
 
 				//屏蔽外部中断10
 				//EXTI->IMR &= 0xffffffbf;
@@ -190,8 +198,8 @@ void DMX_USART_IRQHandler(void)
 	else if(USART_GetITStatus(DMX_USART, USART_IT_RXNE) != RESET) //接收到数据
 	{	 
 		res =USART_ReceiveData(DMX_USART); 	//读取接收到的数据
-		uart_resiver(res);
-		TEST_SUM += res;
+		//uart_resiver(res);
+		//TEST_SUM += res;
 		if(DMX512_RX_CNT<513)
 		{
 			DMX512_RX_BUF[DMX512_RX_CNT]=res;		//记录接收到的值

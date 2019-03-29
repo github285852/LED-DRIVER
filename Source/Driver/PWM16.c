@@ -26,6 +26,62 @@ PWM13	->	PA1
 
 */
 
+void TIM1_PWM_Init(u16 psc)
+{  
+	GPIO_InitTypeDef GPIO_InitStructure;
+	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+	TIM_OCInitTypeDef  TIM_OCInitStructure;
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);	//使能定时器3时钟
+	
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
+  GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_9;
+  GPIO_Init(GPIOA,&GPIO_InitStructure);
+
+   //初始化TIM2
+	
+	TIM_TimeBaseStructure.TIM_Period = 10-1; //设置在下一个更新事件装入活动的自动重装载寄存器周期的值
+	TIM_TimeBaseStructure.TIM_Prescaler =	psc; //设置用来作为TIMx时钟频率除数的预分频值 
+	TIM_TimeBaseStructure.TIM_ClockDivision = 0; //设置时钟分割:TDTS = Tck_tim
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  //TIM向上计数模式
+	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure); //根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
+
+ 	//初始化TIM2 Channel1 PWM模式	 
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2; //选择定时器模式:TIM脉冲宽度调制模式2
+ 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low; //输出极性:TIM输出比较极性高
+	TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
+	TIM_OC2Init(TIM1, &TIM_OCInitStructure);  //根据T指定的参数初始化外设TIM2 OC1
+	TIM_OC2PreloadConfig(TIM1, TIM_OCPreload_Enable);  //使能TIM3在CCR1上的预装载寄存器
+	
+//	//初始化TIM2 Channel2 PWM模式	 
+//	TIM_OC2Init(TIM1, &TIM_OCInitStructure);  //根据T指定的参数初始化外设TIM2 OC2
+//	TIM_OC2PreloadConfig(TIM1, TIM_OCPreload_Enable);  //使能TIM3在CCR2上的预装载寄存器
+// 
+// 	//初始化TIM2 Channel3 PWM模式	 
+//	TIM_OC3Init(TIM1, &TIM_OCInitStructure);  //根据T指定的参数初始化外设TIM2 OC1
+//	TIM_OC3PreloadConfig(TIM1, TIM_OCPreload_Enable);  //使能TIM3在CCR1上的预装载寄存器
+//	
+//	//初始化TIM2 Channel4 PWM模式	 
+//	TIM_OC4Init(TIM1, &TIM_OCInitStructure);  //根据T指定的参数初始化外设TIM2 OC1
+//	TIM_OC4PreloadConfig(TIM1, TIM_OCPreload_Enable);  //使能TIM3在CCR1上的预装载寄存器
+
+
+  TIM_ARRPreloadConfig(TIM1, ENABLE);
+  TIM_CtrlPWMOutputs(TIM1, ENABLE);//pwm输出
+	TIM_Cmd(TIM1, ENABLE);  //使能TIM3
+
+}
+
+void fanboOut(void)
+{
+	//450k
+	TIM1_PWM_Init(18-1);
+	TIM_SetCompare2(TIM1,9-1);
+	//TIM_SetCompare2(TIM1,0);
+}
+
 //TIM2 PWM部分初始化 
 //PWM输出初始化
 //arr：自动重装值
@@ -258,17 +314,19 @@ void set_pwm(unsigned char ch,unsigned int duty)
 		default:break;
 	}
 }
+
 void PWM16_init(void)
 {
 	int i;
 	TIM2_PWM_Init(1);
 	TIM3_PWM_Init(1);
-	TIM4_PWM_Init(30);
-	TIM5_PWM_Init(30);
-	for(i=0;i<16;i++)
+	//TIM4_PWM_Init(1);
+	//TIM5_PWM_Init(1);
+	for(i=0;i<7;i++)
 	{
 		set_pwm(i,0);
 	}
+	fanboOut();
 }
 
 
