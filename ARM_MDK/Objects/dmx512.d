@@ -1,12 +1,12 @@
 .\objects\dmx512.o: ..\Source\Driver\dmx512.c
 .\objects\dmx512.o: ..\Source\APP\includes.h
-.\objects\dmx512.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\dmx512.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\dmx512.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\dmx512.o: ..\Source\Driver\malloc.h
 .\objects\dmx512.o: ..\Source\USER\stm32f10x.h
 .\objects\dmx512.o: ..\Source\CORE\core_cm3.h
-.\objects\dmx512.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dmx512.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dmx512.o: ..\Source\USER\system_stm32f10x.h
 .\objects\dmx512.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\dmx512.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

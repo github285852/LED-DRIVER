@@ -14,7 +14,7 @@ void ledpower_task(float T);
 void ledpower_init(void);
 void Send_I_to_PC(void);
 void SetLedPower(unsigned char ch,float mA);
-void SetLedPowerOpen(unsigned char ch,unsigned short pwm);
+void SetLedPowerOpen(unsigned char ch,unsigned short current);
 void AutoCalibrateTask(void);
 
 #endif

@@ -33,6 +33,7 @@ void SysInit(void)
 //			Sys.AutoCal = 1;
 //	}
 	Sys.Config.addr = 0;
+	NEXT_OUT = 0;
 }
 
 int handle_dmx_data(void)
@@ -112,7 +113,7 @@ int handle_dmx_data(void)
 		}
 		break;
 		//case 0xcc://RDM
-
+		/*在数据字节接收的地方处理 */
 		//break;
 		default:break;
 	}

@@ -36,7 +36,7 @@
 
 #endif
 
-#define KEIL_DEBUG	0
+#define KEIL_DEBUG	1
 #define DEBUG_I_OUT	0
 #define NEURAL_PID	1
 

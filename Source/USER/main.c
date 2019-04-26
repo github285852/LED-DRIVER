@@ -28,7 +28,6 @@ void GPIO_init(void)
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_8 | GPIO_Pin_9|GPIO_Pin_10;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 			 //上拉
  	GPIO_Init(GPIOA, &GPIO_InitStructure);//
-	NEXT_OUT = 0;
 }
 
 int main(void)
@@ -45,7 +44,7 @@ int main(void)
 	ledpower_init();
   Debug_printf("LED DRIVER V1.0\r\n");
 	SysInit();
-	IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
+//	IWDG_Init(4,625);    //与分频数为64,重载值为625,溢出时间为1s	
 	//显示
 	//自我矫正最小直流PWM
   while(1)

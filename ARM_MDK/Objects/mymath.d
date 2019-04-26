@@ -1,12 +1,12 @@
 .\objects\mymath.o: ..\Source\Driver\mymath.c
 .\objects\mymath.o: ..\Source\APP\includes.h
-.\objects\mymath.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\mymath.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\mymath.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\mymath.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\mymath.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\mymath.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\mymath.o: ..\Source\Driver\malloc.h
 .\objects\mymath.o: ..\Source\USER\stm32f10x.h
 .\objects\mymath.o: ..\Source\CORE\core_cm3.h
-.\objects\mymath.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mymath.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mymath.o: ..\Source\USER\system_stm32f10x.h
 .\objects\mymath.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\mymath.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

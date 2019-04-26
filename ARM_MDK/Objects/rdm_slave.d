@@ -1,12 +1,12 @@
 .\objects\rdm_slave.o: ..\Source\Driver\rdm_slave.c
 .\objects\rdm_slave.o: ..\Source\APP\includes.h
-.\objects\rdm_slave.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\rdm_slave.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\rdm_slave.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\rdm_slave.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rdm_slave.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rdm_slave.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\rdm_slave.o: ..\Source\Driver\malloc.h
 .\objects\rdm_slave.o: ..\Source\USER\stm32f10x.h
 .\objects\rdm_slave.o: ..\Source\CORE\core_cm3.h
-.\objects\rdm_slave.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rdm_slave.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\rdm_slave.o: ..\Source\USER\system_stm32f10x.h
 .\objects\rdm_slave.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\rdm_slave.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

@@ -158,7 +158,7 @@ void DMA1_Channel1_IRQHandler(void)
 			//
 		}
 		slect_ch(in_ch);//
-	//	slect_ch(4);//
+//slect_ch();//
 		DMA1->IFCR|= 0x02;//ЧхГўБъжО
 	}
 }

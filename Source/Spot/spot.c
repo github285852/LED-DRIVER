@@ -6,6 +6,7 @@ u16 I_changes=0;
 u8 sum_erro=0;
 float DMX_CTL_I[LED_CH];
 float Last_DMX_CTL_I[LED_CH];
+const float PID_MK_TAB[LED_CH] = {MK0,MK1,MK2,MK3,MK4};
 
 void SysInit(void)
 {
@@ -46,7 +47,7 @@ int handle_dmx_data(void)
 		}
 		if(p[i] == sum)//
 		{
-			for(i=0;i<LED_CH;i++)
+			for(i=1;i<LED_CH;i++)
 			{
 				data = *(p+i*2)<<8 | *(p+i*2+1);
 				
@@ -60,10 +61,17 @@ int handle_dmx_data(void)
 				}
 				else
 				{
-					SetLedPowerOpen(i,TARR*data/65536.0);
+					if(i==2)
+					{
+						SetLedPowerOpen(0,data);
+					}
+					else
+					{
+						SetLedPowerOpen(i,data);
+					}
 				}
-			}
-			data = *(p+i*2)<<8 | *(p+i*2+1);
+			}		
+			data = *(p)<<8 | *(p+1);
 			data = TARR1*data/65536.0;
 			//set_pwm(5,data);//FAN_OUT
 			if(data !=0)

@@ -1,12 +1,12 @@
 .\objects\panle.o: ..\Source\Panle\panle.c
 .\objects\panle.o: ..\Source\APP\includes.h
-.\objects\panle.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\panle.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\panle.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\panle.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\panle.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\panle.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\panle.o: ..\Source\Driver\malloc.h
 .\objects\panle.o: ..\Source\USER\stm32f10x.h
 .\objects\panle.o: ..\Source\CORE\core_cm3.h
-.\objects\panle.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\panle.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\panle.o: ..\Source\USER\system_stm32f10x.h
 .\objects\panle.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\panle.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h

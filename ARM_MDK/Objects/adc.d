@@ -2,7 +2,7 @@
 .\objects\adc.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h
 .\objects\adc.o: ..\Source\USER\stm32f10x.h
 .\objects\adc.o: ..\Source\CORE\core_cm3.h
-.\objects\adc.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\adc.o: ..\Source\USER\system_stm32f10x.h
 .\objects\adc.o: ..\Source\USER\stm32f10x_conf.h
 .\objects\adc.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -30,9 +30,9 @@
 .\objects\adc.o: ..\Source\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
 .\objects\adc.o: ..\Source\STM32F10x_FWLib\inc\misc.h
 .\objects\adc.o: ..\Source\APP\includes.h
-.\objects\adc.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\adc.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\adc.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\adc.o: ..\Source\Driver\malloc.h
 .\objects\adc.o: ..\Source\SYSTEM\sys\sys.h
 .\objects\adc.o: ..\Source\SYSTEM\delay\delay.h
@@ -52,4 +52,4 @@
 .\objects\adc.o: ..\Source\Driver\rdm_slave.h
 .\objects\adc.o: ..\Source\Driver\rdm.h
 .\objects\adc.o: ..\Source\Panle\panle.h
-.\objects\adc.o: D:\Program\keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\adc.o: D:\program\keil5\ARM\ARMCC\Bin\..\include\math.h

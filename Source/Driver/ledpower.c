@@ -79,17 +79,17 @@ void ledpower_init(void)
 	}
 }
 //开环直接设置LED
-void SetLedPowerOpen(u8 ch,u16 pwm)
+void SetLedPowerOpen(u8 ch,u16 current)
 {
 	u16 pwmout;
 	Sys.pid_on[ch] = 0;
-	if(pwm==0)
+	if(current==0)
 	{
 		pwmout = 0;
 	}
 	else
 	{
-		pwmout = pwm + Sys.Config.cal.current_min_pwm[ch];
+		pwmout =  (PWM_MAX - Sys.Config.cal.current_min_pwm[ch])*current/65535 + Sys.Config.cal.current_min_pwm[ch];
 	}
 	set_pwm(ch,pwmout);
 }
@@ -232,6 +232,8 @@ void AutoCalibrateTask(void)
 					{
 						out++;
 					}
+					if(out>1000)
+						break;
 			}
 		}
 		SaveConfig();
